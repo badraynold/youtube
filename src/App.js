@@ -14,6 +14,7 @@ function App() {
   const videoProgressRef = useRef();
 
   const [videoProgress, setVideoProgress] = useState(0);
+  const [videoPlay, setVideoPlay] = useState(false);
 
   const handleTimeUpdate = (e) => {
     const progress =
@@ -22,6 +23,14 @@ function App() {
     // videoProgressRef.current.style.width = `${progress}%`;
     setVideoProgress(progress);
   };
+
+  useEffect(() => {
+    if (videoPlay) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [videoPlay]);
 
   return (
     <>
@@ -84,7 +93,16 @@ function App() {
               </div>
               <div className="buttons">
                 <Icon icon="prev" variant="player" />
-                <Icon icon="play" variant="player" />
+                {videoPlay ? (
+                  <div onClick={() => setVideoPlay(false)}>
+                    <Icon icon="pause" variant="player" />
+                  </div>
+                ) : (
+                  <div onClick={() => setVideoPlay(true)}>
+                    <Icon icon="play" variant="player" />
+                  </div>
+                )}
+                {/* <Icon icon="play" variant="player" /> */}
                 <Icon icon="next" variant="player" />
                 <Icon icon="mute" variant="player" />
                 <Icon icon="muted" variant="player" />
@@ -93,7 +111,6 @@ function App() {
                 <Icon icon="miniplayer" variant="player" />
                 <Icon icon="size" variant="player" />
                 <Icon icon="fullscreen" variant="player" />
-                <Icon icon="pause" variant="player" />
               </div>
             </div>
           </div>
