@@ -1,5 +1,6 @@
 import { faCamera, faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useEffect, useRef, useState } from "react";
 
 // import "./App.scss";
 
@@ -9,6 +10,19 @@ import ytLogoImg from "./images/yt-logo.svg";
 import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
 
 function App() {
+  const videoRef = useRef();
+  const videoProgressRef = useRef();
+
+  const [videoProgress, setVideoProgress] = useState(0);
+
+  const handleTimeUpdate = (e) => {
+    const progress =
+      (videoRef.current.currentTime / videoRef.current.duration) * 100;
+
+    // videoProgressRef.current.style.width = `${progress}%`;
+    setVideoProgress(progress);
+  };
+
   return (
     <>
       <nav className="navbar">
@@ -49,27 +63,37 @@ function App() {
 
       <div className="content">
         <div className="content-main">
-          <div className="video-wrapper">
-            <video className="video-stream" controls>
+          <div className="video-wrapper" onTimeUpdate={handleTimeUpdate}>
+            <video
+              className="video-stream"
+              autoPlay
+              controls={true}
+              ref={videoRef}
+            >
               <source src={ytVideo1} />
             </video>
             <div className="video-controls">
               <div className="progress">
-                <div className="progress-bar"></div>
+                <div
+                  className="progress-bar"
+                  style={{
+                    width: `${videoProgress}%`,
+                  }}
+                  ref={videoProgressRef}
+                ></div>
               </div>
               <div className="buttons">
-                {" "}
-                <Icon icon="prev" />
-                <Icon icon="play" />
-                <Icon icon="next" />
-                <Icon icon="mute" />
-                <Icon icon="muted" />
-                <Icon icon="subtitles" />
-                <Icon icon="settings" />
-                <Icon icon="miniplayer" />
-                <Icon icon="size" />
-                <Icon icon="fullscreen" />
-                <Icon icon="pause" />
+                <Icon icon="prev" variant="player" />
+                <Icon icon="play" variant="player" />
+                <Icon icon="next" variant="player" />
+                <Icon icon="mute" variant="player" />
+                <Icon icon="muted" variant="player" />
+                <Icon icon="subtitles" variant="player" />
+                <Icon icon="settings" variant="player" />
+                <Icon icon="miniplayer" variant="player" />
+                <Icon icon="size" variant="player" />
+                <Icon icon="fullscreen" variant="player" />
+                <Icon icon="pause" variant="player" />
               </div>
             </div>
           </div>

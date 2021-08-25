@@ -14,6 +14,7 @@ html {
 :root {
   --black-color: #000;
   --white-color: #fff;
+  --red-color: #f00;
 
   --gray-100-color: #222;
   --gray-200-color: #444;
@@ -36,6 +37,15 @@ html {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.yt-icon-player {
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  fill: var(--white-color);
 }
 
 .navbar {
@@ -155,6 +165,29 @@ html {
 
       .video-stream {
         width: 100%;
+      }
+      .video-controls {
+        position: absolute;
+        bottom: 10rem;
+        width: 100%;
+        padding: 0rem 1rem;
+        .progress {
+          position: relative;
+          width: 100%;
+          height: 0.3rem;
+          background-color: var(--gray-400-color);
+          .progress-bar {
+            position: absolute;
+            height: 100%;
+            background-color: var(--red-color);
+          }
+        }
+        .buttons {
+          display: flex;
+          fill: var(--white-color);
+          .yt-icon {
+          }
+        }
       }
     }
   }
