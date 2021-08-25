@@ -1,4 +1,4 @@
-import { faCamera } from "@fortawesome/free-solid-svg-icons";
+import { faCamera, faStepBackward } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // import "./App.scss";
@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icon from "./Components/Icon";
 
 import ytLogoImg from "./images/yt-logo.svg";
+import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
 
 function App() {
   return (
@@ -46,7 +47,35 @@ function App() {
         </div>
       </nav>
 
-      <div className="content"></div>
+      <div className="content">
+        <div className="content-main">
+          <div className="video-wrapper">
+            <video className="video-stream" controls>
+              <source src={ytVideo1} />
+            </video>
+            <div className="video-controls">
+              <div className="progress">
+                <div className="progress-bar"></div>
+              </div>
+              <div className="buttons">
+                {" "}
+                <Icon icon="prev" />
+                <Icon icon="play" />
+                <Icon icon="next" />
+                <Icon icon="mute" />
+                <Icon icon="muted" />
+                <Icon icon="subtitles" />
+                <Icon icon="settings" />
+                <Icon icon="miniplayer" />
+                <Icon icon="size" />
+                <Icon icon="fullscreen" />
+                <Icon icon="pause" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="content-right">Content Right</div>
+      </div>
     </>
   );
 }

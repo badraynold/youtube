@@ -143,4 +143,23 @@ html {
 .content {
   height: calc(100vh - 5.6rem);
   background: var(--gray-800-color);
+  padding: 2.4rem;
+  column-gap: 2.4rem;
+  display: flex;
+  justify-content: center;
+  .content-main {
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      max-width: 128rem;
+
+      .video-stream {
+        width: 100%;
+      }
+    }
+  }
+  .content-right {
+    width: 40rem;
+    flex-shrink: 0;
+  }
 }
