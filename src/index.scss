@@ -51,6 +51,7 @@ html {
 
   .navbar-start {
     display: flex;
+    margin-right: 5rem;
     .navbar-hamburger {
       margin: 0.6rem 0rem;
       cursor: pointer;
@@ -72,7 +73,8 @@ html {
         text-transform: uppercase;
         position: absolute;
         top: -0.6rem;
-        right: -1.5rem;
+        // right: -1.5rem;
+        right: -3rem;
         color: var(--gray-300-color);
       }
     }
@@ -123,7 +125,21 @@ html {
     }
   }
   .navbar-end {
+    width: 19rem;
+    justify-content: space-between;
     display: flex;
+    .navbar-user {
+      width: 3.2rem;
+      height: 3.2rem;
+      background: #004c3f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      color: var(--white-color);
+      font-size: 1.7rem;
+      margin-left: 1rem;
+    }
   }
 }
 

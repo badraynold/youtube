@@ -1,5 +1,3 @@
-import { faBirthdayCake } from "@fortawesome/free-solid-svg-icons";
-
 const Icon = (props) => {
   let icon;
 
