@@ -1,0 +1,130 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+body {
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  font-size: 10px;
+}
+
+:root {
+  --black-color: #000;
+  --white-color: #fff;
+
+  --gray-100-color: #222;
+  --gray-200-color: #444;
+  --gray-300-color: #666;
+  --gray-400-color: #888;
+  --gray-500-color: #aaa;
+  --gray-600-color: #ccc;
+  --gray-700-color: #eee;
+
+  --primary-color: #333;
+}
+
+.yt-icon {
+  width: 3.4rem;
+  height: 3.4rem;
+  padding: 0.8rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: (--white-color);
+  height: 5.6rem;
+  padding: 0 2.7rem;
+
+  .navbar-start {
+    display: flex;
+    .navbar-hamburger {
+      margin: 0.6rem 0rem;
+      cursor: pointer;
+      .line {
+        width: 1.8rem;
+        height: 0.1rem;
+        margin-bottom: 0.5rem;
+        background-color: var(--black-color);
+      }
+      margin-right: 2.7rem;
+    }
+
+    .navbar-logo {
+      position: relative;
+      margin: 0.3rem 0rem;
+      width: 9rem;
+      height: 2rem;
+      .logo-text {
+        text-transform: uppercase;
+        position: absolute;
+        top: -0.6rem;
+        right: -1.5rem;
+        color: var(--gray-300-color);
+      }
+    }
+  }
+
+  .navbar-mid {
+    display: flex;
+    align-items: center;
+
+    .navbar-search {
+      display: flex;
+      width: 64rem;
+      height: 3.2rem;
+      margin-right: 1rem;
+
+      border-radius: 0.5rem;
+      .search-input {
+        flex-grow: 1;
+        font-size: 1.6rem;
+        color: var(--gray-100-color);
+        padding: 0rem 1.2rem;
+        box-shadow: inset 0rem 0.1rem 0.2rem var(--gray-700-color);
+
+        border: 0.1rem solid var(--gray-600-color);
+        border-radius: 0.2rem 0 0 0.2rem;
+
+        &:focus {
+          outline: none;
+          border: 0.1rem solid #1c62b9;
+          width: 100px;
+        }
+      }
+      .search-label {
+        width: 6.5rem;
+        background-color: var(--gray-700-color);
+        fill: var(--gray-300-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-top: 0.1rem solid var(--gray-600-color);
+        border-bottom: 0.1rem solid var(--gray-600-color);
+        border-right: 0.1rem solid var(--gray-600-color);
+        border-radius: 0 0.2rem 0.2rem 0;
+      }
+    }
+    .navbar-mic {
+      background: var(--gray-700-color);
+    }
+  }
+  .navbar-end {
+    display: flex;
+  }
+}
+
+.section1 {
+  background: #f9f9f9;
+}
