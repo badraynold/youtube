@@ -1,8 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap");
 
-body {
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -73,8 +70,8 @@ html {
         text-transform: uppercase;
         position: absolute;
         top: -0.6rem;
-        // right: -1.5rem;
-        right: -3rem;
+        right: -1.5rem;
+
         color: var(--gray-300-color);
       }
     }
@@ -143,7 +140,7 @@ html {
   }
 }
 
-.section1 {
+.content {
   height: calc(100vh - 5.6rem);
   background: var(--gray-800-color);
 }

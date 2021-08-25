@@ -21,7 +21,7 @@ function App() {
             <a href="/" className="logo-link">
               <img src={ytLogoImg} alt="Logo" />
             </a>
-            <span className="logo-text">Rafała</span>
+            <span className="logo-text">pl</span>
           </div>
         </div>
         <div className="navbar-mid">
@@ -46,7 +46,7 @@ function App() {
         </div>
       </nav>
 
-      <section className="section1"></section>
+      <div className="content"></div>
     </>
   );
 }
