@@ -6,11 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Icon from "./Components/Icon";
 
 import ytLogoImg from "./images/yt-logo.svg";
-import ytSearchImg from "./images/yt-search.svg";
-import ytMicImg from "./images/yt-mic.svg";
-import ytCameraImg from "./images/yt-camera.svg";
-import ytMenuImg from "./images/yt-menu.svg";
-import ytNotificationImg from "./images/yt-notification.svg";
 
 function App() {
   return (

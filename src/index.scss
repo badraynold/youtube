@@ -25,14 +25,16 @@ html {
   --gray-500-color: #aaa;
   --gray-600-color: #ccc;
   --gray-700-color: #eee;
+  --gray-800-color: #f9f9f9;
 
   --primary-color: #333;
+  --focus-color: #1c62b9;
 }
 
 .yt-icon {
   width: 3.4rem;
   height: 3.4rem;
-  padding: 0.8rem;
+  padding: 0.5rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -92,20 +94,20 @@ html {
         font-size: 1.6rem;
         color: var(--gray-100-color);
         padding: 0rem 1.2rem;
-        box-shadow: inset 0rem 0.1rem 0.2rem var(--gray-700-color);
+        box-shadow: inset 0rem 0.1rem 0.2rem var(--gray-800-color);
 
         border: 0.1rem solid var(--gray-600-color);
         border-radius: 0.2rem 0 0 0.2rem;
 
         &:focus {
           outline: none;
-          border: 0.1rem solid #1c62b9;
+          border: 0.1rem solid var(--focus-color);
           width: 100px;
         }
       }
       .search-label {
         width: 6.5rem;
-        background-color: var(--gray-700-color);
+        background-color: var(--gray-800-color);
         fill: var(--gray-300-color);
         display: flex;
         justify-content: center;
@@ -117,7 +119,7 @@ html {
       }
     }
     .navbar-mic {
-      background: var(--gray-700-color);
+      background: var(--gray-800-color);
     }
   }
   .navbar-end {
@@ -126,5 +128,6 @@ html {
 }
 
 .section1 {
-  background: #f9f9f9;
+  height: calc(100vh - 5.6rem);
+  background: var(--gray-800-color);
 }
