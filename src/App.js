@@ -20,7 +20,6 @@ function App() {
     const progress =
       (videoRef.current.currentTime / videoRef.current.duration) * 100;
 
-    // videoProgressRef.current.style.width = `${progress}%`;
     setVideoProgress(progress);
   };
 
