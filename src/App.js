@@ -110,6 +110,26 @@ function App() {
                 <Icon icon="miniplayer" variant="player" />
                 <Icon icon="size" variant="player" />
                 <Icon icon="fullscreen" variant="player" />
+
+                <Icon icon="home" variant="player" />
+                <Icon icon="explore" variant="player" />
+                <Icon icon="subscriptions" variant="player" />
+                <Icon icon="library" variant="player" />
+                <Icon icon="history" variant="player" />
+                <Icon icon="your-videos" variant="player" />
+                <Icon icon="watch-later" variant="player" />
+                <Icon icon="mix" variant="player" />
+                <Icon icon="liked-videos" variant="player" />
+                <Icon icon="show-more" variant="player" />
+                <Icon icon="youtube-premium" variant="player" />
+                <Icon icon="movies" variant="player" />
+                <Icon icon="gaming" variant="player" />
+                <Icon icon="live" variant="player" />
+                <Icon icon="sports" variant="player" />
+                <Icon icon="settings-2" variant="player" />
+                <Icon icon="report-history" variant="player" />
+                <Icon icon="help" variant="player" />
+                <Icon icon="send-feedback" variant="player" />
               </div>
             </div>
           </div>
