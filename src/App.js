@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Icon from "./components/Icon";
 import Brand from "./components/Brand";
 
-import ytVideo1 from "./streams/tina-mother-within/stream.webm";
+import ytVideo1 from "./streams/c-bool-golden-rules/stream.webm";
 
 import codeAndCreateIcon from "./icons/code-and-create-icon.jpg";
 import sadhguruIcon from "./icons/sadhguru-icon.jpg";
@@ -22,6 +22,12 @@ import stream2Img from "./streams/tina-mother-within/stream.jpg";
 import stream3Img from "./streams/sia-courage-to-change/stream.jpg";
 import stream4Img from "./streams/rag-n-bone-human/stream.jpg";
 import stream5Img from "./streams/sadhguru-manifest/stream.jpg";
+import stream6Img from "./streams/pharell-williams-freedom/stream.jpg";
+import stream7Img from "./streams/will-smith-black-suits/stream.jpg";
+import stream8Img from "./streams/imagine-dragons-whatever/stream.jpg";
+import stream9Img from "./streams/coldplay-adventure-of-a-lifetime/stream.jpg";
+import stream10Img from "./streams/katy-perry-dark-horse/stream.jpg";
+import stream11Img from "./streams/ed-sheeran-shape-of-you/stream.jpg";
 
 function App() {
   const videoRef = useRef();
@@ -488,6 +494,76 @@ function App() {
               <br />
               <span className="desc-views">12M views</span>
               <span className="desc-time">1 year ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream6Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">Pharell Williams - Freedom (Video)</h3>
+              <span className="desc-author">Pharell Williams</span>
+              <br />
+              <span className="desc-views">114M views</span>
+              <span className="desc-time">6 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream7Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Will Smith - Black Suits Comin' (Nod Ya Head) ft. TRÂ-Knox
+              </h3>
+              <span className="desc-author">WillSmithVEVO</span>
+              <br />
+              <span className="desc-views">12M views</span>
+              <span className="desc-time">11 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream8Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Imagine Dragons - Whatever It Takes
+              </h3>
+              <span className="desc-author">ImagineDragons</span>
+              <br />
+              <span className="desc-views">70M views</span>
+              <span className="desc-time">4 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream9Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Coldplay - Adventure Of A Lifetime (Official Video)
+              </h3>
+              <span className="desc-author">Coldplay</span>
+              <br />
+              <span className="desc-views">1.2B views</span>
+              <span className="desc-time">6 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream10Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Katy Perry - Dark Horse (Official) ft. Juicy J
+              </h3>
+              <span className="desc-author">Katy Perry</span>
+              <br />
+              <span className="desc-views">3.1B views</span>
+              <span className="desc-time">7 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream11Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Ed Sheeran - Shape of You (Official Music Video)
+              </h3>
+              <span className="desc-author">Ed Sheeran</span>
+              <br />
+              <span className="desc-views">5.4B views</span>
+              <span className="desc-time">4 years ago</span>
             </div>
           </div>
         </div>
