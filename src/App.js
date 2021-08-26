@@ -4,11 +4,10 @@ import { useEffect, useRef, useState } from "react";
 
 // import "./App.scss";
 
-import Icon from "./Components/Icon";
-import Brand from "./Components/Brand";
+import Icon from "./components/Icon";
+import Brand from "./components/Brand";
 
-import ytLogoImg from "./images/yt-logo.svg";
-import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
+import ytVideo1 from "./streams/tina-mother-within/stream.webm";
 
 import codeAndCreateIcon from "./icons/code-and-create-icon.jpg";
 import sadhguruIcon from "./icons/sadhguru-icon.jpg";
@@ -17,6 +16,12 @@ import moreleIcon from "./icons/moreletv-icon.jpg";
 import ishaIcon from "./icons/isha-foundation-icon.jpg";
 import dandapaniIcon from "./icons/dandapaniLLC-icon.jpg";
 import traversyIcon from "./icons/traversy-media-icon.jpg";
+
+import stream1Img from "./streams/c-bool-golden-rules/stream.jpg";
+import stream2Img from "./streams/tina-mother-within/stream.jpg";
+import stream3Img from "./streams/sia-courage-to-change/stream.jpg";
+import stream4Img from "./streams/rag-n-bone-human/stream.jpg";
+import stream5Img from "./streams/sadhguru-manifest/stream.jpg";
 
 function App() {
   const videoRef = useRef();
@@ -426,7 +431,66 @@ function App() {
             </div>
           </div>
         </div>
-        <div className="content-right">Content Right</div>
+        <div className="content-right">
+          <div className="video-item">
+            <img src={stream1Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">C-BooL - Golden Rules</h3>
+              <span className="desc-author">C-BooL</span>
+              <br />
+              <span className="desc-views">9.7M views</span>
+              <span className="desc-time">4 months ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream2Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Tina Turner - Mother Within (Heavenly Home) - 'Beyond'
+              </h3>
+              <span className="desc-author">TINA Turner Blog</span>
+              <br />
+              <span className="desc-views">2.4M views</span>
+              <span className="desc-time">6 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream3Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Sia - Courage To Change (Official Music Video)
+              </h3>
+              <span className="desc-author">Sergey Tyapaev</span>
+              <br />
+              <span className="desc-views">14M views</span>
+              <span className="desc-time">6 months ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream4Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Rag'n'Bone Man - Human (Official Video)
+              </h3>
+              <span className="desc-author">Rag'n'Bone Man</span>
+              <br />
+              <span className="desc-views">1.3B views</span>
+              <span className="desc-time">5 years ago</span>
+            </div>
+          </div>
+          <div className="video-item">
+            <img src={stream5Img} className="item-img" alt="item"></img>
+            <div className="item-desc">
+              <h3 className="desc-title">
+                Sadhguru On How to Manifest What you Really Want
+              </h3>
+              <span className="desc-author">Sadhguru</span>
+              <br />
+              <span className="desc-views">12M views</span>
+              <span className="desc-time">1 year ago</span>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

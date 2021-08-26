@@ -326,5 +326,46 @@ html {
   .content-right {
     width: 40rem;
     flex-shrink: 0;
+    .video-item {
+      display: flex;
+      margin-bottom: 0.8rem;
+
+      .item-img {
+        width: 16.8rem;
+        height: 9.4rem;
+        margin-right: 0.6rem;
+      }
+      .item-desc {
+        .desc-title {
+          font-size: 1.4rem;
+          line-height: 2rem;
+          font-weight: 500;
+          letter-spacing: 0.05rem;
+          margin-bottom: 0.3rem;
+        }
+
+        .desc-author {
+        }
+        .desc-author,
+        .desc-views,
+        .desc-time {
+          line-height: 1.8rem;
+          font-size: 1.2rem;
+
+          font-weight: 400;
+          letter-spacing: 0.03rem;
+          color: var(--gray-300-color);
+        }
+
+        .desc-views {
+          &:after {
+            content: "•";
+            margin: 0 0.4rem;
+          }
+        }
+        .desc-time {
+        }
+      }
+    }
   }
 }
