@@ -13,9 +13,11 @@ import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
 function App() {
   const videoRef = useRef();
   const videoProgressRef = useRef();
+  const asideRef = useRef();
 
   const [videoProgress, setVideoProgress] = useState(0);
   const [videoPlay, setVideoPlay] = useState(false);
+  const [asideActive, setAsideActive] = useState(0);
 
   const handleTimeUpdate = (e) => {
     const progress =
@@ -32,16 +34,30 @@ function App() {
     }
   }, [videoPlay]);
 
+  useEffect(() => {
+    if (asideActive) {
+      if (asideActive === 1) {
+        asideRef.current.classList.add("show");
+        setAsideActive(2);
+      } else {
+        asideRef.current.classList.add("active");
+      }
+    } else {
+      asideRef.current.classList.remove("active");
+    }
+  }, [asideActive]);
+
   return (
     <>
       <nav className="navbar">
         <div className="navbar-start">
-          <div className="navbar-hamburger">
-            <div className="line"></div>
-            <div className="line"></div>
-            <div className="line"></div>
-          </div>
-          <Brand />
+          <Icon
+            icon="hamburger"
+            className="navbar-hamburger"
+            onClick={() => setAsideActive(1)}
+          />
+
+          <Brand className="navbar-logo" />
         </div>
         <div className="navbar-mid">
           <div className="navbar-search">
@@ -64,10 +80,19 @@ function App() {
           <div className="navbar-user">R</div>
         </div>
       </nav>
-      <aside className="aside">
+
+      <aside
+        className="aside"
+        onTransitionEnd={() => {
+          if (!asideActive) {
+            asideRef.current.classList.remove("show");
+          }
+        }}
+        ref={asideRef}
+      >
         <div className="aside-main">
           <div className="main-header">
-            <Icon icon="hamburger" />
+            <Icon icon="hamburger" onClick={() => setAsideActive(0)} />
             <Brand />
           </div>
           <ul className="main-content">
@@ -85,7 +110,6 @@ function App() {
             </li>
           </ul>
         </div>
-        <div className="aside-overlay"></div>
       </aside>
 
       <div className="content">

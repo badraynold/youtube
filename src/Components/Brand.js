@@ -1,8 +1,9 @@
 import ytLogoImg from "../images/yt-logo.svg";
 
-const Brand = () => {
+const Brand = (props) => {
+  const classes = props.className ? "yt-logo " + props.className : "yt-logo";
   return (
-    <div className="yt-logo">
+    <div className={classes}>
       <a href="/" className="yt-logo-link">
         <img src={ytLogoImg} alt="Logo" />
       </a>

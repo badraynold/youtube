@@ -51,7 +51,6 @@ html {
 
 .yt-logo {
   position: relative;
-  margin: 0.3rem 0rem;
   width: 9rem;
   height: 2rem;
   .yt-logo-text {
@@ -61,6 +60,11 @@ html {
     right: -1.5rem;
     color: var(--gray-300-color);
   }
+  .yt-logo-link {
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .navbar {
@@ -69,36 +73,20 @@ html {
   align-items: center;
   background-color: (--white-color);
   height: 5.6rem;
-  padding: 0 2.7rem;
+  padding: 0 2rem;
 
   .navbar-start {
     display: flex;
+    align-items: center;
     margin-right: 5rem;
     .navbar-hamburger {
-      margin: 0.6rem 0rem;
+      padding-top: 0.4rem;
       cursor: pointer;
-      .line {
-        width: 1.8rem;
-        height: 0.1rem;
-        margin-bottom: 0.5rem;
-        background-color: var(--black-color);
-      }
-      margin-right: 2.7rem;
+      margin-right: 1.8rem;
     }
 
     .navbar-logo {
       position: relative;
-      margin: 0.3rem 0rem;
-      width: 9rem;
-      height: 2rem;
-      .logo-text {
-        text-transform: uppercase;
-        position: absolute;
-        top: -0.6rem;
-        right: -1.5rem;
-
-        color: var(--gray-300-color);
-      }
     }
   }
 
@@ -166,22 +154,21 @@ html {
 }
 
 .aside {
+  display: none;
   position: fixed;
   top: 0;
-  left: 0;
-
+  width: 100%;
   height: 100vh;
-
-  // background: red;
-
   z-index: 10;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s;
   .aside-main {
     position: absolute;
     height: 100%;
     width: 24rem;
-    left: 0;
+    left: -24rem;
     background-color: var(--white-color);
-    transition: left 1.2s;
+    transition: left 0.5s;
     .main-header {
       height: 5.5rem;
       display: flex;
@@ -198,32 +185,24 @@ html {
         align-items: center;
         margin-bottom: 0.6rem;
         .item-icon {
+          margin-right: 1.9rem;
         }
         .item-text {
-          margin-left: 1.9rem;
           font-size: 1.4rem;
           letter-spacing: 0.02rem;
         }
       }
     }
   }
-  .aside-overlay {
-    position: absolute;
-    left: 24rem;
-    width: calc(100vw - 24rem);
-    height: 100%;
+
+  &.active {
     background-color: rgba(0, 0, 0, 0.5);
-    transition: background-color 1.2s, left 1.2s, width 1.2s;
-  }
-  &:hover1 {
     .aside-main {
-      left: -24rem;
-    }
-    .aside-overlay {
       left: 0;
-      width: 100vw;
-      background-color: rgba(0, 0, 0, 0);
     }
+  }
+  &.show {
+    display: block;
   }
 }
 

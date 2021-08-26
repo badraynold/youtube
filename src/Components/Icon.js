@@ -9,6 +9,12 @@ const Icon = (props) => {
     ? baseClass + " " + props.className
     : baseClass;
 
+  const onClick = (e) => {
+    if (props.onClick) {
+      props.onClick(e);
+    }
+  };
+
   switch (props.icon) {
     case "search":
       icon = (
@@ -471,7 +477,11 @@ const Icon = (props) => {
       icon = "";
   }
 
-  return <div className={classes}>{icon}</div>;
+  return (
+    <div className={classes} onClick={onClick}>
+      {icon}
+    </div>
+  );
 };
 
 export default Icon;
