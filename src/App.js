@@ -289,6 +289,73 @@ function App() {
               </a>
             </li>
             <li className="content-item item-separator"></li>
+            <li className="content-item item-footer">
+              <ul className="footer-links">
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    About
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Press
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Copyright
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Contact us
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Creators
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Advertise
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Developers
+                  </a>
+                </li>
+              </ul>
+              <ul className="footer-links">
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Terms
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Privacy
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Policy &amp; Safety
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    How YouTube works
+                  </a>
+                </li>
+                <li className="footer-item">
+                  <a href="#1" className="footer-link">
+                    Test new features
+                  </a>
+                </li>
+              </ul>
+              <div className="footer-copyright">&copy; 2021 Google LLC</div>
+            </li>
           </ul>
         </div>
       </aside>
