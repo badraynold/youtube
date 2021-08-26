@@ -36,12 +36,8 @@ function App() {
 
   useEffect(() => {
     if (asideActive) {
-      if (asideActive === 1) {
-        asideRef.current.classList.add("show");
-        setAsideActive(2);
-      } else {
-        asideRef.current.classList.add("active");
-      }
+      asideRef.current.classList.add("show");
+      asideRef.current.classList.add("active");
     } else {
       asideRef.current.classList.remove("active");
     }
@@ -54,7 +50,7 @@ function App() {
           <Icon
             icon="hamburger"
             className="navbar-hamburger"
-            onClick={() => setAsideActive(1)}
+            onClick={() => setAsideActive(true)}
           />
 
           <Brand className="navbar-logo" />
@@ -92,7 +88,7 @@ function App() {
       >
         <div className="aside-main">
           <div className="main-header">
-            <Icon icon="hamburger" onClick={() => setAsideActive(0)} />
+            <Icon icon="hamburger" onClick={() => setAsideActive(false)} />
             <Brand />
           </div>
           <ul className="main-content">
