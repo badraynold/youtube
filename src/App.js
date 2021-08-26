@@ -225,6 +225,70 @@ function App() {
                 <span className="item-text">Traversy Media</span>
               </a>
             </li>
+            <li className="content-item item-more">
+              <a href="#1" className="item-link">
+                <Icon icon="show-more" className="item-icon" />
+                <span className="item-text">Show 8 more</span>
+              </a>
+            </li>
+            <li className="content-item item-separator"></li>
+            <li className="content-item item-section">More from youtube</li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="youtube-premium" className="item-icon" />
+                <span className="item-text">YouTube Premium</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="movies" className="item-icon" />
+                <span className="item-text">Movies</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="gaming" className="item-icon" />
+                <span className="item-text">Gaming</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="live" className="item-icon" />
+                <span className="item-text">Live</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="sports" className="item-icon" />
+                <span className="item-text">Sports</span>
+              </a>
+            </li>
+            <li className="content-item item-separator"></li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="settings-2" className="item-icon" />
+                <span className="item-text">Settings</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="report-history" className="item-icon" />
+                <span className="item-text">Report history</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="help" className="item-icon" />
+                <span className="item-text">Help</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="send-feedback" className="item-icon" />
+                <span className="item-text">Send feedback</span>
+              </a>
+            </li>
+            <li className="content-item item-separator"></li>
           </ul>
         </div>
       </aside>
