@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 // import "./App.scss";
 
 import Icon from "./Components/Icon";
+import Brand from "./Components/Brand";
 
 import ytLogoImg from "./images/yt-logo.svg";
 import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
@@ -40,12 +41,7 @@ function App() {
             <div className="line"></div>
             <div className="line"></div>
           </div>
-          <div className="navbar-logo">
-            <a href="/" className="logo-link">
-              <img src={ytLogoImg} alt="Logo" />
-            </a>
-            <span className="logo-text">pl</span>
-          </div>
+          <Brand />
         </div>
         <div className="navbar-mid">
           <div className="navbar-search">
@@ -68,6 +64,29 @@ function App() {
           <div className="navbar-user">R</div>
         </div>
       </nav>
+      <aside className="aside">
+        <div className="aside-main">
+          <div className="main-header">
+            <Icon icon="hamburger" />
+            <Brand />
+          </div>
+          <ul className="main-content">
+            <li className="content-item">
+              <Icon icon="home" className="item-icon" />
+              <span className="item-text">Home</span>
+            </li>
+            <li className="content-item">
+              <Icon icon="explore" className="item-icon" />
+              <span className="item-text">Explore</span>
+            </li>
+            <li className="content-item">
+              <Icon icon="subscriptions" className="item-icon" />
+              <span className="item-text">Subscriptions</span>
+            </li>
+          </ul>
+        </div>
+        <div className="aside-overlay"></div>
+      </aside>
 
       <div className="content">
         <div className="content-main">
@@ -130,6 +149,7 @@ function App() {
                 <Icon icon="report-history" variant="player" />
                 <Icon icon="help" variant="player" />
                 <Icon icon="send-feedback" variant="player" />
+                <Icon icon="hamburger" variant="player" />
               </div>
             </div>
           </div>

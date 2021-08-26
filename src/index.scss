@@ -49,6 +49,20 @@ html {
   cursor: pointer;
 }
 
+.yt-logo {
+  position: relative;
+  margin: 0.3rem 0rem;
+  width: 9rem;
+  height: 2rem;
+  .yt-logo-text {
+    text-transform: uppercase;
+    position: absolute;
+    top: -0.6rem;
+    right: -1.5rem;
+    color: var(--gray-300-color);
+  }
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -147,6 +161,68 @@ html {
       color: var(--white-color);
       font-size: 1.7rem;
       margin-left: 1rem;
+    }
+  }
+}
+
+.aside {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+
+  // background: red;
+
+  z-index: 10;
+  .aside-main {
+    position: absolute;
+    height: 100%;
+    width: 24rem;
+    left: 0;
+    background-color: var(--white-color);
+    transition: left 1.2s;
+    .main-header {
+      height: 5.5rem;
+      display: flex;
+      align-items: center;
+      margin-left: 1.9rem;
+      .yt-icon {
+        margin-right: 3.5rem;
+      }
+    }
+    .main-content {
+      padding: 1.6rem 1.9rem;
+      .content-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.6rem;
+        .item-icon {
+        }
+        .item-text {
+          margin-left: 1.9rem;
+          font-size: 1.4rem;
+          letter-spacing: 0.02rem;
+        }
+      }
+    }
+  }
+  .aside-overlay {
+    position: absolute;
+    left: 24rem;
+    width: calc(100vw - 24rem);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: background-color 1.2s, left 1.2s, width 1.2s;
+  }
+  &:hover1 {
+    .aside-main {
+      left: -24rem;
+    }
+    .aside-overlay {
+      left: 0;
+      width: 100vw;
+      background-color: rgba(0, 0, 0, 0);
     }
   }
 }
