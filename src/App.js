@@ -10,6 +10,14 @@ import Brand from "./Components/Brand";
 import ytLogoImg from "./images/yt-logo.svg";
 import ytVideo1 from "./videos/C-BooL - Golden Rules (Official Video).webm";
 
+import codeAndCreateIcon from "./icons/code-and-create-icon.jpg";
+import sadhguruIcon from "./icons/sadhguru-icon.jpg";
+import sadhguruPLIcon from "./icons/sadhguruPL-icon.jpg";
+import moreleIcon from "./icons/moreletv-icon.jpg";
+import ishaIcon from "./icons/isha-foundation-icon.jpg";
+import dandapaniIcon from "./icons/dandapaniLLC-icon.jpg";
+import traversyIcon from "./icons/traversy-media-icon.jpg";
+
 function App() {
   const videoRef = useRef();
   const videoProgressRef = useRef();
@@ -93,16 +101,129 @@ function App() {
           </div>
           <ul className="main-content">
             <li className="content-item">
-              <Icon icon="home" className="item-icon" />
-              <span className="item-text">Home</span>
+              <a href="#1" className="item-link">
+                <Icon icon="home" className="item-icon" />
+                <span className="item-text">Home</span>
+              </a>
             </li>
             <li className="content-item">
-              <Icon icon="explore" className="item-icon" />
-              <span className="item-text">Explore</span>
+              <a href="#1" className="item-link">
+                <Icon icon="explore" className="item-icon" />
+                <span className="item-text">Explore</span>
+              </a>
             </li>
             <li className="content-item">
-              <Icon icon="subscriptions" className="item-icon" />
-              <span className="item-text">Subscriptions</span>
+              <a href="#1" className="item-link">
+                <Icon icon="subscriptions" className="item-icon" />
+                <span className="item-text">Subscriptions</span>
+              </a>
+            </li>
+            <li className="content-item item-separator"></li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="library" className="item-icon" />
+                <span className="item-text">Library</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="history" className="item-icon" />
+                <span className="item-text">History</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="your-videos" className="item-icon" />
+                <span className="item-text">Your videos</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="watch-later" className="item-icon" />
+                <span className="item-text">Watch later</span>
+              </a>
+            </li>
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="live" className="item-icon" />
+                <span className="item-text">Mix</span>
+              </a>
+            </li>
+
+            <li className="content-item">
+              <a href="#1" className="item-link">
+                <Icon icon="liked-videos" className="item-icon" />
+                <span className="item-text">Liked videos</span>
+              </a>
+            </li>
+            <li className="content-item item-separator"></li>
+
+            <li className="content-item item-section">Subscriptions</li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img src={sadhguruIcon} className="item-img" alt="sadhguru" />
+                <span className="item-text">Sadhguru</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={codeAndCreateIcon}
+                  className="item-img"
+                  alt="Code And Create"
+                />
+                <span className="item-text">Code And Create</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={moreleIcon}
+                  className="item-img"
+                  alt="Code And Create"
+                />
+                <span className="item-text">moreleTV</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={sadhguruPLIcon}
+                  className="item-img"
+                  alt="Sadhguru Polska"
+                />
+                <span className="item-text">Sadhguru Polska</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={ishaIcon}
+                  className="item-img"
+                  alt="Code And Create"
+                />
+                <span className="item-text">Isha Foundation</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={dandapaniIcon}
+                  className="item-img"
+                  alt="Code And Create"
+                />
+                <span className="item-text">DandapaniLLC</span>
+              </a>
+            </li>
+            <li className="content-item item-subscription">
+              <a href="#1" className="item-link">
+                <img
+                  src={traversyIcon}
+                  className="item-img"
+                  alt="Code And Create"
+                />
+                <span className="item-text">Traversy Media</span>
+              </a>
             </li>
           </ul>
         </div>
