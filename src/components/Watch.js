@@ -5,16 +5,14 @@ import Icon from "../components/Icon";
 import { Link } from "react-router-dom";
 
 const Watch = (props) => {
-  //   console.log(props);
   const videoId = new URLSearchParams(props.location.search).get("v");
-  const stream = Streams.filter((item) => item.id === videoId)[0];
-  console.log(stream);
+  //   const stream = Streams.filter((item) => item.id === videoId)[0];
 
   //   const tags = stream.tags.map(tag => )
 
   const videoItems = Streams.map((item) => {
     return (
-      <div className="video-item">
+      <div className="video-item" key={item.id}>
         <Link className="item-link" to={`/watch?v=${item.id}`}>
           <img src={item.image} className="item-img" alt="item" />
           <div className="item-desc">

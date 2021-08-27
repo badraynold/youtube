@@ -319,6 +319,7 @@ html {
         display: flex;
         justify-content: space-between;
         .info-left {
+          flex-shrink: 1;
           .info-views,
           .info-release {
             font-size: 1.4rem;

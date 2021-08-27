@@ -24,7 +24,6 @@ const Stream = (props) => {
   }, [videoPlay]);
 
   useEffect(() => {
-    console.log("v change");
     if (prevVideo.current !== props.id) {
       videoRef.current.load();
       prevVideo.current = props.id;

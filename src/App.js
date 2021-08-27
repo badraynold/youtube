@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Icon from "./components/Icon";
 import Brand from "./components/Brand";
