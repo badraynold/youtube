@@ -1,13 +1,16 @@
-import { faCamera, faStepBackward } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useRef, useState } from "react";
+
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+import Streams from "./components/Streams";
 
 // import "./App.scss";
 
 import Icon from "./components/Icon";
 import Brand from "./components/Brand";
 
-import ytVideo1 from "./streams/c-bool-golden-rules/stream.webm";
+import Stream from "./components/Stream";
 
 import codeAndCreateIcon from "./icons/code-and-create-icon.jpg";
 import sadhguruIcon from "./icons/sadhguru-icon.jpg";
@@ -30,28 +33,8 @@ import stream10Img from "./streams/katy-perry-dark-horse/stream.jpg";
 import stream11Img from "./streams/ed-sheeran-shape-of-you/stream.jpg";
 
 function App() {
-  const videoRef = useRef();
-  const videoProgressRef = useRef();
   const asideRef = useRef();
-
-  const [videoProgress, setVideoProgress] = useState(0);
-  const [videoPlay, setVideoPlay] = useState(false);
   const [asideActive, setAsideActive] = useState(0);
-
-  const handleTimeUpdate = (e) => {
-    const progress =
-      (videoRef.current.currentTime / videoRef.current.duration) * 100;
-
-    setVideoProgress(progress);
-  };
-
-  useEffect(() => {
-    if (videoPlay) {
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
-  }, [videoPlay]);
 
   useEffect(() => {
     if (asideActive) {
@@ -62,8 +45,25 @@ function App() {
     }
   }, [asideActive]);
 
+  const videoItems = Streams.map((item) => {
+    return (
+      <div className="video-item">
+        <Link className="item-link" to={`/watch?v=${item.id}`}>
+          <img src={item.image} className="item-img" alt="item" />
+          <div className="item-desc">
+            <h3 className="desc-title">{item.title}</h3>
+            <span className="desc-author">{item.author}</span>
+            <br />
+            <span className="desc-views">{item.viewsSmall} views</span>
+            <span className="desc-time">{item.releaseAgo}</span>
+          </div>
+        </Link>
+      </div>
+    );
+  });
+
   return (
-    <>
+    <Router>
       <nav className="navbar">
         <div className="navbar-start">
           <Icon
@@ -373,71 +373,10 @@ function App() {
 
       <div className="content">
         <div className="content-main">
-          <div className="video-wrapper" onTimeUpdate={handleTimeUpdate}>
-            <video
-              className="video-stream"
-              autoPlay
-              controls={true}
-              ref={videoRef}
-            >
-              <source src={ytVideo1} />
-            </video>
-            <div className="video-controls">
-              <div className="progress">
-                <div
-                  className="progress-bar"
-                  style={{
-                    width: `${videoProgress}%`,
-                  }}
-                  ref={videoProgressRef}
-                ></div>
-              </div>
-              <div className="buttons">
-                <Icon icon="prev" variant="player" />
-                {videoPlay ? (
-                  <div onClick={() => setVideoPlay(false)}>
-                    <Icon icon="pause" variant="player" />
-                  </div>
-                ) : (
-                  <div onClick={() => setVideoPlay(true)}>
-                    <Icon icon="play" variant="player" />
-                  </div>
-                )}
-                {/* <Icon icon="play" variant="player" /> */}
-                <Icon icon="next" variant="player" />
-                <Icon icon="mute" variant="player" />
-                <Icon icon="muted" variant="player" />
-                <Icon icon="subtitles" variant="player" />
-                <Icon icon="settings" variant="player" />
-                <Icon icon="miniplayer" variant="player" />
-                <Icon icon="size" variant="player" />
-                <Icon icon="fullscreen" variant="player" />
-
-                <Icon icon="home" variant="player" />
-                <Icon icon="explore" variant="player" />
-                <Icon icon="subscriptions" variant="player" />
-                <Icon icon="library" variant="player" />
-                <Icon icon="history" variant="player" />
-                <Icon icon="your-videos" variant="player" />
-                <Icon icon="watch-later" variant="player" />
-                <Icon icon="mix" variant="player" />
-                <Icon icon="liked-videos" variant="player" />
-                <Icon icon="show-more" variant="player" />
-                <Icon icon="youtube-premium" variant="player" />
-                <Icon icon="movies" variant="player" />
-                <Icon icon="gaming" variant="player" />
-                <Icon icon="live" variant="player" />
-                <Icon icon="sports" variant="player" />
-                <Icon icon="settings-2" variant="player" />
-                <Icon icon="report-history" variant="player" />
-                <Icon icon="help" variant="player" />
-                <Icon icon="send-feedback" variant="player" />
-                <Icon icon="hamburger" variant="player" />
-              </div>
-            </div>
-          </div>
+          <Route path="/watch" component={Stream} />
         </div>
         <div className="content-right">
+          {videoItems}
           <div className="video-item">
             <img src={stream1Img} className="item-img" alt="item"></img>
             <div className="item-desc">
@@ -568,7 +507,7 @@ function App() {
           </div>
         </div>
       </div>
-    </>
+    </Router>
   );
 }
 
