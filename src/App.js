@@ -3,12 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Streams from "./components/Streams";
-
 import Icon from "./components/Icon";
 import Brand from "./components/Brand";
 
-import Stream from "./components/Stream";
+import Watch from "./components/Watch";
 
 import codeAndCreateIcon from "./icons/code-and-create-icon.jpg";
 import sadhguruIcon from "./icons/sadhguru-icon.jpg";
@@ -18,19 +16,7 @@ import ishaIcon from "./icons/isha-foundation-icon.jpg";
 import dandapaniIcon from "./icons/dandapaniLLC-icon.jpg";
 import traversyIcon from "./icons/traversy-media-icon.jpg";
 
-import stream1Img from "./streams/c-bool-golden-rules/stream.jpg";
-import stream2Img from "./streams/tina-mother-within/stream.jpg";
-import stream3Img from "./streams/sia-courage-to-change/stream.jpg";
-import stream4Img from "./streams/rag-n-bone-human/stream.jpg";
-import stream5Img from "./streams/sadhguru-manifest/stream.jpg";
-import stream6Img from "./streams/pharell-williams-freedom/stream.jpg";
-import stream7Img from "./streams/will-smith-black-suits/stream.jpg";
-import stream8Img from "./streams/imagine-dragons-whatever/stream.jpg";
-import stream9Img from "./streams/coldplay-adventure-of-a-lifetime/stream.jpg";
-import stream10Img from "./streams/katy-perry-dark-horse/stream.jpg";
-import stream11Img from "./streams/ed-sheeran-shape-of-you/stream.jpg";
-
-function App() {
+const App = (props) => {
   const asideRef = useRef();
   const [asideActive, setAsideActive] = useState(0);
 
@@ -42,23 +28,6 @@ function App() {
       asideRef.current.classList.remove("active");
     }
   }, [asideActive]);
-
-  const videoItems = Streams.map((item) => {
-    return (
-      <div className="video-item">
-        <Link className="item-link" to={`/watch?v=${item.id}`}>
-          <img src={item.image} className="item-img" alt="item" />
-          <div className="item-desc">
-            <h3 className="desc-title">{item.title}</h3>
-            <span className="desc-author">{item.author}</span>
-            <br />
-            <span className="desc-views">{item.viewsSmall} views</span>
-            <span className="desc-time">{item.releaseAgo}</span>
-          </div>
-        </Link>
-      </div>
-    );
-  });
 
   return (
     <Router>
@@ -368,15 +337,9 @@ function App() {
           </ul>
         </div>
       </aside>
-
-      <div className="content">
-        <div className="content-main">
-          <Route path="/watch" component={Stream} />
-        </div>
-        <div className="content-right">{videoItems}</div>
-      </div>
+      <Route path="/watch" component={Watch} />
     </Router>
   );
-}
+};
 
 export default App;
