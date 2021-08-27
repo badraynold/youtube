@@ -290,10 +290,10 @@ html {
   display: flex;
   justify-content: center;
   .content-main {
+    width: 128rem;
     .video-wrapper {
       position: relative;
       width: 100%;
-      max-width: 128rem;
 
       .video-stream {
         width: 100%;
