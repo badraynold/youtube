@@ -61,28 +61,28 @@ const Watch = (props) => {
             <div className="info-right">
               <div className="info-likes">
                 <span className="info-link">
-                  <Icon icon="like" />
-                  27M
+                  <Icon icon="like" className="info-icon" />
+                  <span className="info-text">27M</span>
                 </span>
                 <span className="info-link">
-                  <Icon icon="unlike" />
-                  1.3M
+                  <Icon icon="unlike" className="info-icon" />
+                  <span className="info-text">1.3M</span>
                 </span>
               </div>
               <span className="info-link">
-                <Icon icon="share" />
-                Share
+                <Icon icon="share" className="info-icon" />
+                <span className="info-text">Share</span>
               </span>
               <span className="info-link">
-                <Icon icon="save" />
-                Save
+                <Icon icon="save" className="info-icon" />
+                <span className="info-text">Save</span>
               </span>
               <span className="info-link">
-                <Icon icon="description" />
-                Description
+                <Icon icon="description" className="info-icon" />
+                <span className="info-text">Description</span>
               </span>
-              <span className="info-link">
-                <Icon icon="more" />
+              <span className="info-link last-link">
+                <Icon icon="more" className="info-icon" />
               </span>
             </div>
           </div>
