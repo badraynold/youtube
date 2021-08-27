@@ -56,7 +56,7 @@ const Watch = (props) => {
           <div className="description-info">
             <div className="info-left">
               <span className="info-views">5,434,043,213 views</span>
-              <span className="invo-release">Jan 30, 2017</span>
+              <span className="info-release">Jan 30, 2017</span>
             </div>
             <div className="info-right">
               <div className="info-likes">

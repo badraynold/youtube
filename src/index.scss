@@ -27,6 +27,7 @@ html {
 
   --primary-color: #333;
   --focus-color: #1c62b9;
+  --blue-color: #065fd4;
 }
 
 .yt-icon {
@@ -291,6 +292,57 @@ html {
   justify-content: center;
   .content-main {
     width: 128rem;
+    .main-description {
+      margin-top: 1.8rem;
+      .description-tags {
+        list-style: none;
+
+        .tag-item {
+          display: inline-block;
+          margin-right: 0.3rem;
+          .tag-link {
+            font-size: 1.2rem;
+            color: var(--blue-color);
+            text-decoration: none;
+          }
+        }
+      }
+
+      .description-title {
+        font-size: 1.8rem;
+        font-weight: 400;
+        line-height: 2.6rem;
+        margin-bottom: 1rem;
+      }
+
+      .description-info {
+        display: flex;
+        justify-content: space-between;
+        .info-left {
+          .info-views,
+          .info-release {
+            font-size: 1.4rem;
+            line-height: 2rem;
+            letter-spacing: 0.02rem;
+            color: var(--gray-300-color);
+          }
+          .info-views {
+            &:after {
+              content: "•";
+              margin: 0 0.4rem;
+            }
+          }
+        }
+
+        .info-right {
+          display: flex;
+          .info-likes {
+            display: flex;
+          }
+        }
+      }
+    }
+
     .video-wrapper {
       position: relative;
       width: 100%;
@@ -317,8 +369,6 @@ html {
         .buttons {
           display: flex;
           fill: var(--white-color);
-          .yt-icon {
-          }
         }
       }
     }
