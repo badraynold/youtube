@@ -4,11 +4,12 @@ import stream3Img from "../streams/sia-courage-to-change/stream.jpg";
 import stream4Img from "../streams/rag-n-bone-human/stream.jpg";
 import stream5Img from "../streams/sadhguru-manifest/stream.jpg";
 import stream6Img from "../streams/pharell-williams-freedom/stream.jpg";
-import stream7Img from "../streams/will-smith-black-suits/stream.jpg";
+import stream7Img from "../streams/will-smith-men-in-black/stream.jpg";
 import stream8Img from "../streams/imagine-dragons-whatever/stream.jpg";
 import stream9Img from "../streams/coldplay-adventure-of-a-lifetime/stream.jpg";
 import stream10Img from "../streams/katy-perry-dark-horse/stream.jpg";
 import stream11Img from "../streams/ed-sheeran-shape-of-you/stream.jpg";
+import stream12Img from "../streams/linkin-park-talking-to-myself/stream.jpg";
 
 import stream1Vid from "../streams/c-bool-golden-rules/stream.webm";
 import stream2Vid from "../streams/tina-mother-within/stream.webm";
@@ -16,11 +17,12 @@ import stream3Vid from "../streams/sia-courage-to-change/stream.webm";
 import stream4Vid from "../streams/rag-n-bone-human/stream.webm";
 import stream5Vid from "../streams/sadhguru-manifest/stream.mp4";
 import stream6Vid from "../streams/pharell-williams-freedom/stream.webm";
-import stream7Vid from "../streams/will-smith-black-suits/stream.webm";
+import stream7Vid from "../streams/will-smith-men-in-black/stream.webm";
 import stream8Vid from "../streams/imagine-dragons-whatever/stream.webm";
 import stream9Vid from "../streams/coldplay-adventure-of-a-lifetime/stream.webm";
 import stream10Vid from "../streams/katy-perry-dark-horse/stream.webm";
 import stream11Vid from "../streams/ed-sheeran-shape-of-you/stream.mp4";
+import stream12Vid from "../streams/linkin-park-talking-to-myself/stream.mp4";
 
 const Streams = [
   {
@@ -127,18 +129,19 @@ const Streams = [
     video: stream6Vid,
   },
   {
-    id: "1RVRCd6J2NA",
+    id: "fiBLgEx6svA",
     tags: [],
-    title: "Pharrell Williams - Freedom (Video)",
-    views: "12,568,411",
-    viewsSmall: "12M",
-    releaseDate: "Oct 23, 2010",
-    releaseAgo: "11 years ago",
+    title: "Will Smith - Men In Black (Video Version)",
+    views: "101,934,442",
+    viewsSmall: "101M",
+    releaseDate: "May 9, 2014",
+    releaseAgo: "7 years ago",
     author: "WillSmithVEVO",
     subscribers: "854K",
-    likes: "82K",
-    unlikes: "2.1K",
-    description: `Will Smith's official music video for 'Black Suits Comin' (Nod Ya Head)'. Click to listen to Will Smith on Spotify: http://smarturl.it/WillSmithSpotify?I...`,
+    likes: "784K",
+    unlikes: "19K",
+    description: `"Men In Black" by Will Smith
+    Listen to Will Smith: https://WillSmith.lnk.to/listenYD`,
     image: stream7Img,
     video: stream7Vid,
   },
@@ -211,6 +214,23 @@ const Streams = [
     Pre-order the new album "=" - out October 29th: https://es.lnk.to/equals`,
     image: stream11Img,
     video: stream11Vid,
+  },
+  {
+    id: "lvs68OKOquM",
+    tags: ["OfficialMusicVideo", "LinkinPark", "TalkingToMyself"],
+    title: "Talking To Myself [Official Music Video] - Linkin Park",
+    views: "139,152,023",
+    viewsSmall: "139M",
+    releaseDate: "Jul 20, 2017",
+    releaseAgo: "4 years ago",
+    author: "Linkin Park",
+    subscribers: "18.2M",
+    likes: "1.7M",
+    unlikes: "36K",
+    description: `Watch the official music video for Talking To Myself by Linkin Park from the album One More Light.
+    🔔 Subscribe to the channel: https://bit.ly/1EBzxN2`,
+    image: stream12Img,
+    video: stream12Vid,
   },
 ];
 

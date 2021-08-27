@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
 
 import Icon from "./components/Icon";
 import Brand from "./components/Brand";
@@ -337,7 +342,12 @@ const App = (props) => {
           </ul>
         </div>
       </aside>
-      <Route path="/watch" component={Watch} />
+      <Switch>
+        <Route path="/watch" component={Watch} />
+        <Route>
+          <Redirect push to="/watch?v=5ewENntV0uY"></Redirect>
+        </Route>
+      </Switch>
     </Router>
   );
 };
