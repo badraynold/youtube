@@ -33,7 +33,7 @@ const Watch = (props) => {
   return (
     <div className="content">
       <div className="content-main">
-        <Stream id={videoId} />
+        <Stream stream={stream} />
         <StreamDescription stream={stream} />
         <StreamProfile stream={stream} />
       </div>

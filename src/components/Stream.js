@@ -1,34 +1,49 @@
 import Streams from "../components/Streams";
 import Icon from "../components/Icon";
 import { useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Stream = (props) => {
-  const [videoPlay, setVideoPlay] = useState(false);
+  const [playVideo, setPlayVideo] = useState(false);
+  const [muteVideo, setMuteVideo] = useState(false);
   const [videoProgress, setVideoProgress] = useState(0);
-  //   console.log(props);
+  const stream = props.stream;
 
   const videoRef = useRef();
   const prevVideo = useRef();
 
   const videoProgressRef = useRef();
-  const stream = Streams.filter((item) => item.id === props.id)[0];
+  const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
+  let nextIdx = currentIdx + 1;
+  if (nextIdx >= Streams.length) {
+    nextIdx = 0;
+  }
+  const nextId = Streams[nextIdx].id;
 
   const videoSrc = stream.video;
 
   useEffect(() => {
-    if (videoPlay) {
+    if (playVideo) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
     }
-  }, [videoPlay]);
+  }, [playVideo]);
 
   useEffect(() => {
-    if (prevVideo.current !== props.id) {
-      videoRef.current.load();
-      prevVideo.current = props.id;
+    if (muteVideo) {
+      videoRef.current.muted = true;
+    } else {
+      videoRef.current.muted = false;
     }
-  }, [props.id]);
+  }, [muteVideo]);
+
+  useEffect(() => {
+    if (prevVideo.current !== props.stream.id) {
+      videoRef.current.load();
+      prevVideo.current = props.stream.id;
+    }
+  }, [props.stream.id]);
 
   const handleTimeUpdate = (e) => {
     const progress =
@@ -53,25 +68,35 @@ const Stream = (props) => {
           ></div>
         </div>
         <div className="buttons">
-          <Icon icon="prev" variant="player" />
-          {videoPlay ? (
-            <div onClick={() => setVideoPlay(false)}>
+          {/* <Icon icon="prev" variant="player" /> */}
+          {playVideo ? (
+            <div onClick={() => setPlayVideo(false)}>
               <Icon icon="pause" variant="player" />
             </div>
           ) : (
-            <div onClick={() => setVideoPlay(true)}>
+            <div onClick={() => setPlayVideo(true)}>
               <Icon icon="play" variant="player" />
             </div>
           )}
-          {/* <Icon icon="play" variant="player" /> */}
-          <Icon icon="next" variant="player" />
-          <Icon icon="mute" variant="player" />
-          <Icon icon="muted" variant="player" />
+          <Link to={`/watch?v=${nextId}`}>
+            <Icon icon="next" variant="player" />
+          </Link>
+
+          {muteVideo ? (
+            <div onClick={() => setMuteVideo(false)}>
+              <Icon icon="muted" variant="player" />
+            </div>
+          ) : (
+            <div onClick={() => setMuteVideo(true)}>
+              <Icon icon="mute" variant="player" />
+            </div>
+          )}
+          {/* <Icon icon="muted" variant="player" />
           <Icon icon="subtitles" variant="player" />
           <Icon icon="settings" variant="player" />
           <Icon icon="miniplayer" variant="player" />
           <Icon icon="size" variant="player" />
-          <Icon icon="fullscreen" variant="player" />
+          <Icon icon="fullscreen" variant="player" /> */}
         </div>
       </div>
     </div>

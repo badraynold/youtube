@@ -13,6 +13,7 @@ const StreamProfile = (props) => {
       </>
     );
   });
+  console.log(description);
   //   description = description.replaceAll("a", "<br />");
   return (
     <div className="main-profile">
