@@ -7,14 +7,16 @@ const Stream = (props) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [muteVideo, setMuteVideo] = useState(false);
   const [volumeVideo, setVolumeVideo] = useState(100);
+  const [volumeClicked, setVolumeClicked] = useState(false);
 
-  const [videoProgress, setVideoProgress] = useState(0);
+  const [progressVideo, setProgressVideo] = useState(0);
   const stream = props.stream;
 
   const videoRef = useRef();
   const prevVideo = useRef();
+  const volumeRef = useRef();
 
-  const videoProgressRef = useRef();
+  const progressVideoRef = useRef();
   const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
   let nextIdx = currentIdx + 1;
   if (nextIdx >= Streams.length) {
@@ -43,6 +45,10 @@ const Stream = (props) => {
   }, [muteVideo]);
 
   useEffect(() => {
+    videoRef.current.volume = volumeVideo / 100;
+  }, [volumeVideo]);
+
+  useEffect(() => {
     if (prevVideo.current !== props.stream.id) {
       videoRef.current.load();
       prevVideo.current = props.stream.id;
@@ -53,7 +59,39 @@ const Stream = (props) => {
     const progress =
       (videoRef.current.currentTime / videoRef.current.duration) * 100;
 
-    setVideoProgress(progress);
+    setProgressVideo(progress);
+  };
+
+  const handleVolumeSet = (e) => {
+    const volumeRect = volumeRef.current.getClientRects()[0];
+    let x = e.clientX - volumeRect.x;
+    if (x < 0) {
+      x = 0;
+    } else if (x > volumeRect.width) {
+      x = volumeRect.width;
+    }
+
+    const pct = (x / volumeRect.width) * 100;
+    setVolumeVideo(pct);
+    setMuteVideo(false);
+  };
+
+  const handleMouseDown = (e) => {
+    handleVolumeSet(e);
+    setVolumeClicked(true);
+  };
+
+  const handleMouseMove = (e) => {
+    if (volumeClicked) {
+      handleVolumeSet(e);
+      // if (e.buttons === 0) {
+      //   setVolumeClicked(false);
+      // }
+    }
+  };
+
+  const handleMouseUp = (e) => {
+    setVolumeClicked(false);
   };
 
   return (
@@ -66,13 +104,12 @@ const Stream = (props) => {
           <div
             className="progress-bar"
             style={{
-              width: `${videoProgress}%`,
+              width: `${progressVideo}%`,
             }}
-            ref={videoProgressRef}
+            ref={progressVideoRef}
           ></div>
         </div>
         <div className="buttons">
-          {/* <Icon icon="prev" variant="player" /> */}
           {playVideo ? (
             <div onClick={() => setPlayVideo(false)}>
               <Icon icon="pause" variant="player" />
@@ -95,12 +132,20 @@ const Stream = (props) => {
               <Icon icon="mute" variant="player" />
             </div>
           )}
-
-          <div className="volume">
-            <div
-              className="volume-bar"
-              style={{ width: `${volumeVideo}%` }}
-            ></div>
+          <div
+            className="volume-wrapper"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseUp}
+            onMouseUp={handleMouseUp}
+            ref={volumeRef}
+          >
+            <div className="volume">
+              <div
+                className="volume-bar"
+                style={{ width: `${volumeVideo}%` }}
+              ></div>
+            </div>
           </div>
 
           {/* <Icon icon="muted" variant="player" />
