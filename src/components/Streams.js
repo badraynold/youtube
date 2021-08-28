@@ -52,7 +52,7 @@ const Streams = [
     likes: "67K",
     unlikes: "2.3K",
     description: `Follow my Instagram https://www.instagram.com/c_bool/
-    Download or Stream links here: http://www.soundline.biz/CBooLGoldenR...
+    Download or Stream links here: http://www.soundline.biz/CBooLGoldenRules/
     C-BooL Facebook: http://bit.ly/1SV9tk3​`,
     image: stream1Img,
     video: stream1Vid,
@@ -215,7 +215,6 @@ const Streams = [
     likes: "13M",
     unlikes: "1.3M",
     description: `Listen to Katy’s new song “Smile”: https://katy.to/smileID
-
     Get "Dark Horse" from Katy Perry's 'PRISM': http://katy.to/PRISM`,
     image: stream10Img,
     video: stream10Vid,
