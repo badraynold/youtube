@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 const Stream = (props) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [muteVideo, setMuteVideo] = useState(false);
+  const [volumeVideo, setVolumeVideo] = useState(100);
+
   const [videoProgress, setVideoProgress] = useState(0);
   const stream = props.stream;
 
@@ -33,8 +35,10 @@ const Stream = (props) => {
   useEffect(() => {
     if (muteVideo) {
       videoRef.current.muted = true;
+      setVolumeVideo(0);
     } else {
       videoRef.current.muted = false;
+      setVolumeVideo(100);
     }
   }, [muteVideo]);
 
@@ -91,6 +95,14 @@ const Stream = (props) => {
               <Icon icon="mute" variant="player" />
             </div>
           )}
+
+          <div className="volume">
+            <div
+              className="volume-bar"
+              style={{ width: `${volumeVideo}%` }}
+            ></div>
+          </div>
+
           {/* <Icon icon="muted" variant="player" />
           <Icon icon="subtitles" variant="player" />
           <Icon icon="settings" variant="player" />
