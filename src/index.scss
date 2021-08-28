@@ -510,6 +510,12 @@ html {
               }
             }
           }
+          .time-current {
+            display: flex;
+            align-items: center;
+            margin-left: 1rem;
+            color: var(--white-color);
+          }
         }
       }
     }

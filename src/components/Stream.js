@@ -8,6 +8,8 @@ const Stream = (props) => {
   const [muteVideo, setMuteVideo] = useState(false);
   const [volumeVideo, setVolumeVideo] = useState(100);
   const [volumeClicked, setVolumeClicked] = useState(false);
+  const [currentTime, setCurrentTime] = useState("");
+  const [totalTime, setTotalTime] = useState("");
 
   const [progressVideo, setProgressVideo] = useState(0);
   const stream = props.stream;
@@ -60,6 +62,16 @@ const Stream = (props) => {
       (videoRef.current.currentTime / videoRef.current.duration) * 100;
 
     setProgressVideo(progress);
+    const ms = getMinutesSeconds(videoRef.current.currentTime);
+    setCurrentTime(`${ms.minutes}:${ms.seconds}`);
+    const tms = getMinutesSeconds(videoRef.current.duration);
+    setTotalTime(`${tms.minutes}:${tms.seconds}`);
+  };
+
+  const getMinutesSeconds = (t) => {
+    const m = Math.floor(t / 60);
+    const s = ("0" + Math.floor(t - m * 60)).slice(-2);
+    return { minutes: m, seconds: s };
   };
 
   const handleVolumeSet = (e) => {
@@ -84,9 +96,6 @@ const Stream = (props) => {
   const handleMouseMove = (e) => {
     if (volumeClicked) {
       handleVolumeSet(e);
-      // if (e.buttons === 0) {
-      //   setVolumeClicked(false);
-      // }
     }
   };
 
@@ -147,6 +156,8 @@ const Stream = (props) => {
               ></div>
             </div>
           </div>
+          <div className="time-current">{currentTime}</div>
+          <div className="time-current">&nbsp; {totalTime}</div>
 
           {/* <Icon icon="muted" variant="player" />
           <Icon icon="subtitles" variant="player" />
