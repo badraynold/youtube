@@ -6,6 +6,8 @@ import stream5Img from "../streams/sadhguru-manifest/stream.jpg";
 import stream6Img from "../streams/pharell-williams-freedom/stream.jpg";
 import stream7Img from "../streams/will-smith-men-in-black/stream.jpg";
 import stream8Img from "../streams/imagine-dragons-whatever/stream.jpg";
+import stream8ProfileImg from "../streams/imagine-dragons-whatever/profile.jpg";
+
 import stream9Img from "../streams/coldplay-adventure-of-a-lifetime/stream.jpg";
 import stream10Img from "../streams/katy-perry-dark-horse/stream.jpg";
 import stream11Img from "../streams/ed-sheeran-shape-of-you/stream.jpg";
@@ -162,6 +164,7 @@ const Streams = [
     Catch Imagine Dragons on tour: http://imaginedragonsmusic.com/tour`,
     image: stream8Img,
     video: stream8Vid,
+    profileImage: stream8ProfileImg,
   },
   {
     id: "QtXby3twMmI",
