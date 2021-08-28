@@ -484,6 +484,10 @@ html {
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
+            // -webkit-user-select: none;
+            // -moz-user-select: none;
+            // -ms-user-select: none;
+            // user-select: none;
             .volume {
               position: relative;
 
@@ -510,11 +514,19 @@ html {
               }
             }
           }
-          .time-current {
+          .time-current,
+          .time-separator,
+          .time-duration {
             display: flex;
             align-items: center;
-            margin-left: 1rem;
-            color: var(--white-color);
+            font-size: 1.3rem;
+            color: var(--gray-600-color);
+          }
+          .time-current {
+            margin-left: 2rem;
+          }
+          .time-separator {
+            margin: 0 0.5rem;
           }
         }
       }

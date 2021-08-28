@@ -69,9 +69,19 @@ const Stream = (props) => {
   };
 
   const getMinutesSeconds = (t) => {
-    const m = Math.floor(t / 60);
-    const s = ("0" + Math.floor(t - m * 60)).slice(-2);
-    return { minutes: m, seconds: s };
+    let ret = {
+      minutes: "0",
+      seconds: "00",
+    };
+    if (!isNaN(t)) {
+      const m = Math.floor(t / 60);
+      const s = ("0" + Math.floor(t - m * 60)).slice(-2);
+      ret = {
+        minutes: m,
+        seconds: s,
+      };
+    }
+    return ret;
   };
 
   const handleVolumeSet = (e) => {
@@ -89,8 +99,11 @@ const Stream = (props) => {
   };
 
   const handleMouseDown = (e) => {
-    handleVolumeSet(e);
+    // e.preventDefault();
+    console.log("mousedown");
     setVolumeClicked(true);
+
+    handleVolumeSet(e);
   };
 
   const handleMouseMove = (e) => {
@@ -100,8 +113,28 @@ const Stream = (props) => {
   };
 
   const handleMouseUp = (e) => {
+    // e.preventDefault();
     setVolumeClicked(false);
+    console.log("mouseup");
   };
+
+  useEffect(() => {
+    if (volumeClicked) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  });
+
+  useEffect(() => {
+    if (volumeClicked) {
+      window.addEventListener("mouseup", handleMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
+  }, [volumeClicked]);
 
   return (
     <div className="video-wrapper" onTimeUpdate={handleTimeUpdate}>
@@ -144,9 +177,9 @@ const Stream = (props) => {
           <div
             className="volume-wrapper"
             onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseUp}
-            onMouseUp={handleMouseUp}
+            // onMouseMove={handleMouseMove}
+            // onMouseLeave={handleMouseUp}
+            // onMouseUp={handleMouseUp}
             ref={volumeRef}
           >
             <div className="volume">
@@ -157,7 +190,8 @@ const Stream = (props) => {
             </div>
           </div>
           <div className="time-current">{currentTime}</div>
-          <div className="time-current">&nbsp; {totalTime}</div>
+          <div className="time-separator">/</div>
+          <div className="time-duration">{totalTime}</div>
 
           {/* <Icon icon="muted" variant="player" />
           <Icon icon="subtitles" variant="player" />

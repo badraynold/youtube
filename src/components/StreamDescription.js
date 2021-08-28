@@ -2,7 +2,7 @@ import Icon from "../components/Icon";
 
 const StreamDescription = (props) => {
   const stream = props.stream;
-  console.log(stream);
+
   const tags = stream.tags.map((item) => {
     return (
       <li className="tag-item">
