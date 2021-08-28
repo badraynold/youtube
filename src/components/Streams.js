@@ -1,17 +1,29 @@
 import stream1Img from "../streams/c-bool-golden-rules/stream.jpg";
+import stream1ProfileImg from "../streams/c-bool-golden-rules/profile.jpg";
 import stream2Img from "../streams/tina-mother-within/stream.jpg";
+import stream2ProfileImg from "../streams/tina-mother-within/profile.jpg";
 import stream3Img from "../streams/sia-courage-to-change/stream.jpg";
+import stream3ProfileImg from "../streams/sia-courage-to-change/profile.jpg";
 import stream4Img from "../streams/rag-n-bone-human/stream.jpg";
+import stream4ProfileImg from "../streams/rag-n-bone-human/profile.jpg";
 import stream5Img from "../streams/sadhguru-manifest/stream.jpg";
+import stream5ProfileImg from "../streams/sadhguru-manifest/profile.jpg";
 import stream6Img from "../streams/pharell-williams-freedom/stream.jpg";
+import stream6ProfileImg from "../streams/pharell-williams-freedom/profile.jpg";
+
 import stream7Img from "../streams/will-smith-men-in-black/stream.jpg";
+import stream7ProfileImg from "../streams/will-smith-men-in-black/profile.jpg";
 import stream8Img from "../streams/imagine-dragons-whatever/stream.jpg";
 import stream8ProfileImg from "../streams/imagine-dragons-whatever/profile.jpg";
 
 import stream9Img from "../streams/coldplay-adventure-of-a-lifetime/stream.jpg";
+import stream9ProfileImg from "../streams/coldplay-adventure-of-a-lifetime/profile.jpg";
 import stream10Img from "../streams/katy-perry-dark-horse/stream.jpg";
+import stream10ProfileImg from "../streams/katy-perry-dark-horse/profile.jpg";
 import stream11Img from "../streams/ed-sheeran-shape-of-you/stream.jpg";
+import stream11ProfileImg from "../streams/ed-sheeran-shape-of-you/profile.jpg";
 import stream12Img from "../streams/linkin-park-talking-to-myself/stream.jpg";
+import stream12ProfileImg from "../streams/linkin-park-talking-to-myself/profile.jpg";
 
 import stream1Vid from "../streams/c-bool-golden-rules/stream.webm";
 import stream2Vid from "../streams/tina-mother-within/stream.webm";
@@ -44,6 +56,7 @@ const Streams = [
     C-BooL Facebook: http://bit.ly/1SV9tk3​`,
     image: stream1Img,
     video: stream1Vid,
+    profileImage: stream1ProfileImg,
   },
   {
     id: "Wul9vbHqYDA",
@@ -62,6 +75,7 @@ const Streams = [
       2020 👉🏽 Order 'Happiness'  - The new TINA book to change your life: https://amzn.to/2CRjNi8`,
     image: stream2Img,
     video: stream2Vid,
+    profileImage: stream2ProfileImg,
   },
   {
     id: "XnSTfwI9cPo",
@@ -78,6 +92,7 @@ const Streams = [
     description: `#sia #couragetochange #queensgambit #anyataylorjoy #chess #vevo`,
     image: stream3Img,
     video: stream3Vid,
+    profileImage: stream3ProfileImg,
   },
   {
     id: "L3wKzyIN1yk",
@@ -96,6 +111,7 @@ const Streams = [
     Subscribe to Rag'n'Bone Man's YouTube Channel: https://ragnboneman.lnk.to/YouTube`,
     image: stream4Img,
     video: stream4Vid,
+    profileImage: stream4ProfileImg,
   },
   {
     id: "UwGSgJytufY",
@@ -112,6 +128,7 @@ const Streams = [
     description: `Sadhguru tells us how to take charge of our destiny by aligning our thought, emotions and energies to manifest what we really want.`,
     image: stream5Img,
     video: stream5Vid,
+    profileImage: stream5ProfileImg,
   },
   {
     id: "LlY90lG_Fuw",
@@ -129,6 +146,7 @@ const Streams = [
     Listen to Pharrell: https://PharrellWilliams.lnk.to/listenYD`,
     image: stream6Img,
     video: stream6Vid,
+    profileImage: stream6ProfileImg,
   },
   {
     id: "fiBLgEx6svA",
@@ -146,6 +164,7 @@ const Streams = [
     Listen to Will Smith: https://WillSmith.lnk.to/listenYD`,
     image: stream7Img,
     video: stream7Vid,
+    profileImage: stream7ProfileImg,
   },
   {
     id: "gOsM-DYAEhY",
@@ -181,6 +200,7 @@ const Streams = [
     description: `Coldplay - Adventure Of A Lifetime is taken from the album A Head Full of Dreams released in 2015`,
     image: stream9Img,
     video: stream9Vid,
+    profileImage: stream9ProfileImg,
   },
   {
     id: "0KSOMA3QBU0",
@@ -199,6 +219,7 @@ const Streams = [
     Get "Dark Horse" from Katy Perry's 'PRISM': http://katy.to/PRISM`,
     image: stream10Img,
     video: stream10Vid,
+    profileImage: stream10ProfileImg,
   },
 
   {
@@ -217,6 +238,7 @@ const Streams = [
     Pre-order the new album "=" - out October 29th: https://es.lnk.to/equals`,
     image: stream11Img,
     video: stream11Vid,
+    profileImage: stream11ProfileImg,
   },
   {
     id: "lvs68OKOquM",
@@ -234,6 +256,7 @@ const Streams = [
     🔔 Subscribe to the channel: https://bit.ly/1EBzxN2`,
     image: stream12Img,
     video: stream12Vid,
+    profileImage: stream12ProfileImg,
   },
 ];
 
