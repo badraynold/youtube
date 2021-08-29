@@ -216,6 +216,40 @@ const Icon = (props) => {
         </svg>
       );
       break;
+    case "fullscreen-exit":
+      icon = (
+        <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
+          <g>
+            <use></use>
+            <path
+              d="m 14,14 -4,0 0,2 6,0 0,-6 -2,0 0,4 0,0 z"
+              id="ytp-id-174"
+            ></path>
+          </g>
+          <g>
+            <use></use>
+            <path
+              d="m 22,14 0,-4 -2,0 0,6 6,0 0,-2 -4,0 0,0 z"
+              id="ytp-id-175"
+            ></path>
+          </g>
+          <g>
+            <use></use>
+            <path
+              d="m 20,26 2,0 0,-4 4,0 0,-2 -6,0 0,6 0,0 z"
+              id="ytp-id-176"
+            ></path>
+          </g>
+          <g>
+            <use></use>
+            <path
+              d="m 10,22 4,0 0,4 2,0 0,-6 -6,0 0,2 0,0 z"
+              id="ytp-id-177"
+            ></path>
+          </g>
+        </svg>
+      );
+      break;
     case "pause":
       icon = (
         <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">

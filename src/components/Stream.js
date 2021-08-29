@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const Stream = (props) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [muteVideo, setMuteVideo] = useState(false);
+  const [fullscreenVideo, setFullscreenVideo] = useState(false);
   const [volumeVideo, setVolumeVideo] = useState(100);
-  // const [visibleVolumeVideo, setVisibleVolumeVideo] = useState(100);
 
   const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -17,6 +17,7 @@ const Stream = (props) => {
   const stream = props.stream;
 
   const videoRef = useRef();
+  const videoWrapperRef = useRef();
 
   const prevVideo = useRef();
   const volumeRef = useRef();
@@ -41,6 +42,33 @@ const Stream = (props) => {
   }, [playVideo]);
 
   useEffect(() => {
+    if (fullscreenVideo) {
+      console.log("entering fs");
+      if (videoWrapperRef.current.requestFullscreen) {
+        videoWrapperRef.current.requestFullscreen();
+      } else if (videoWrapperRef.current.webkitRequestFullscreen) {
+        /* Safari */
+        videoWrapperRef.current.webkitRequestFullscreen();
+      } else if (videoWrapperRef.current.msRequestFullscreen) {
+        /* IE11 */
+        videoWrapperRef.current.msRequestFullscreen();
+      }
+    } else {
+      if (document.fullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
+      }
+    }
+  }, [fullscreenVideo]);
+
+  useEffect(() => {
     if (muteVideo) {
       videoRef.current.muted = true;
       setVolumeVideo(0);
@@ -49,10 +77,6 @@ const Stream = (props) => {
       setVolumeVideo(videoRef.current.volume * 100);
     }
   }, [muteVideo]);
-
-  useEffect(() => {
-    // videoRef.current.volume = volumeVideo / 100;
-  }, [volumeVideo]);
 
   useEffect(() => {
     if (prevVideo.current !== props.stream.id) {
@@ -140,7 +164,11 @@ const Stream = (props) => {
   }, [volumeClicked]);
 
   return (
-    <div className="video-wrapper" onTimeUpdate={handleTimeUpdate}>
+    <div
+      className="video-wrapper"
+      onTimeUpdate={handleTimeUpdate}
+      ref={videoWrapperRef}
+    >
       <video className="video-stream" autoPlay controls={false} ref={videoRef}>
         <source src={videoSrc} />
       </video>
@@ -199,6 +227,15 @@ const Stream = (props) => {
           <Icon icon="miniplayer" variant="player" />
           <Icon icon="size" variant="player" />
           <Icon icon="fullscreen" variant="player" /> */}
+          <div className="icons-right">
+            <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
+              {fullscreenVideo ? (
+                <Icon icon="fullscreen-exit" variant="player" />
+              ) : (
+                <Icon icon="fullscreen" variant="player" />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
