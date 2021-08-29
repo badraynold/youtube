@@ -118,27 +118,29 @@ const Stream = (props) => {
     console.log("mouseup");
   };
 
-  useEffect(() => {
-    if (volumeClicked) {
-      window.addEventListener("mousemove", handleMouseMove);
-    }
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  });
+  // useEffect(() => {
+  //   if (volumeClicked) {
+  //     window.addEventListener("mousemove", handleMouseMove);
+  //   }
+  //   return () => {
+  //     window.removeEventListener("mousemove", handleMouseMove);
+  //   };
+  // });
 
   useEffect(() => {
     if (volumeClicked) {
+      window.addEventListener("mousemove", handleMouseMove);
       window.addEventListener("mouseup", handleMouseUp);
     }
     return () => {
       window.removeEventListener("mouseup", handleMouseUp);
+      window.removeEventListener("mousemove", handleMouseMove);
     };
   }, [volumeClicked]);
 
   return (
     <div className="video-wrapper" onTimeUpdate={handleTimeUpdate}>
-      <video className="video-stream" autoPlay controls={true} ref={videoRef}>
+      <video className="video-stream" autoPlay controls={false} ref={videoRef}>
         <source src={videoSrc} />
       </video>
       <div className="video-controls">

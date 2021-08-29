@@ -484,10 +484,7 @@ html {
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
-            // -webkit-user-select: none;
-            // -moz-user-select: none;
-            // -ms-user-select: none;
-            // user-select: none;
+            user-select: none;
             .volume {
               position: relative;
 
