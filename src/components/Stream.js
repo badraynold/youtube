@@ -7,6 +7,8 @@ const Stream = (props) => {
   const [playVideo, setPlayVideo] = useState(false);
   const [muteVideo, setMuteVideo] = useState(false);
   const [volumeVideo, setVolumeVideo] = useState(100);
+  // const [visibleVolumeVideo, setVisibleVolumeVideo] = useState(100);
+
   const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [totalTime, setTotalTime] = useState("");
@@ -15,8 +17,10 @@ const Stream = (props) => {
   const stream = props.stream;
 
   const videoRef = useRef();
+
   const prevVideo = useRef();
   const volumeRef = useRef();
+  const volumeInnerRef = useRef();
 
   const progressVideoRef = useRef();
   const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
@@ -42,12 +46,12 @@ const Stream = (props) => {
       setVolumeVideo(0);
     } else {
       videoRef.current.muted = false;
-      setVolumeVideo(100);
+      setVolumeVideo(videoRef.current.volume * 100);
     }
   }, [muteVideo]);
 
   useEffect(() => {
-    videoRef.current.volume = volumeVideo / 100;
+    // videoRef.current.volume = volumeVideo / 100;
   }, [volumeVideo]);
 
   useEffect(() => {
@@ -85,8 +89,9 @@ const Stream = (props) => {
   };
 
   const handleVolumeSet = (e) => {
-    const volumeRect = volumeRef.current.getClientRects()[0];
+    const volumeRect = volumeInnerRef.current.getClientRects()[0];
     let x = e.clientX - volumeRect.x;
+
     if (x < 0) {
       x = 0;
     } else if (x > volumeRect.width) {
@@ -94,15 +99,18 @@ const Stream = (props) => {
     }
 
     const pct = (x / volumeRect.width) * 100;
+
+    if (pct > 0) {
+      setMuteVideo(false);
+    } else {
+      setMuteVideo(true);
+    }
     setVolumeVideo(pct);
-    setMuteVideo(false);
+    setRealVolumeVideo(pct);
   };
 
   const handleMouseDown = (e) => {
-    // e.preventDefault();
-    console.log("mousedown");
     setVolumeClicked(true);
-
     handleVolumeSet(e);
   };
 
@@ -113,19 +121,12 @@ const Stream = (props) => {
   };
 
   const handleMouseUp = (e) => {
-    // e.preventDefault();
     setVolumeClicked(false);
-    console.log("mouseup");
   };
 
-  // useEffect(() => {
-  //   if (volumeClicked) {
-  //     window.addEventListener("mousemove", handleMouseMove);
-  //   }
-  //   return () => {
-  //     window.removeEventListener("mousemove", handleMouseMove);
-  //   };
-  // });
+  const setRealVolumeVideo = (vol) => {
+    videoRef.current.volume = vol / 100;
+  };
 
   useEffect(() => {
     if (volumeClicked) {
@@ -179,12 +180,9 @@ const Stream = (props) => {
           <div
             className="volume-wrapper"
             onMouseDown={handleMouseDown}
-            // onMouseMove={handleMouseMove}
-            // onMouseLeave={handleMouseUp}
-            // onMouseUp={handleMouseUp}
             ref={volumeRef}
           >
-            <div className="volume">
+            <div className="volume" ref={volumeInnerRef}>
               <div
                 className="volume-bar"
                 style={{ width: `${volumeVideo}%` }}

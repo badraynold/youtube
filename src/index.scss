@@ -460,7 +460,7 @@ html {
       }
       .video-controls {
         position: absolute;
-        bottom: 10rem;
+        bottom: 0rem;
         width: 100%;
         padding: 0rem 1rem;
         .progress {
@@ -477,17 +477,27 @@ html {
         .buttons {
           display: flex;
           fill: var(--white-color);
+          margin-bottom: 0.5rem;
+          &:hover {
+            .volume-wrapper {
+              width: 6.4rem;
+            }
+          }
 
           .volume-wrapper {
-            width: 5.2rem;
+            width: 0rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             cursor: pointer;
             user-select: none;
-            .volume {
-              position: relative;
+            overflow: hidden;
+            transition: width 0.2s;
 
+            .volume {
+              margin: 0 0.6rem;
+              position: relative;
+              width: 5.2rem;
               height: 0.3rem;
               background-color: var(--gray-300-color);
 
@@ -520,7 +530,7 @@ html {
             color: var(--gray-600-color);
           }
           .time-current {
-            margin-left: 2rem;
+            margin-left: 1rem;
           }
           .time-separator {
             margin: 0 0.5rem;
