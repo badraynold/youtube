@@ -3,9 +3,9 @@ import Icon from "../components/Icon";
 const StreamDescription = (props) => {
   const stream = props.stream;
 
-  const tags = stream.tags.map((item) => {
+  const tags = stream.tags.map((item, idx) => {
     return (
-      <li className="tag-item">
+      <li className="tag-item" key={idx}>
         <a href="#1" className="tag-link">
           #{item}
         </a>

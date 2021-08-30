@@ -5,12 +5,12 @@ const StreamProfile = (props) => {
   const stream = props.stream;
   const profileImg = stream.profileImage;
   let description = stream.description;
-  description = description.split("\n").map((item) => {
+  description = description.split("\n").map((item, idx) => {
     return (
-      <>
+      <span key={idx}>
         <Linkify>{item}</Linkify>
         <br />
-      </>
+      </span>
     );
   });
 
