@@ -1,29 +1,42 @@
 import stream1Img from "../streams/c-bool-golden-rules/stream.jpg";
 import stream1ProfileImg from "../streams/c-bool-golden-rules/profile.jpg";
+import stream1PreviewImg from "../streams/c-bool-golden-rules/stream.webp";
 import stream2Img from "../streams/tina-mother-within/stream.jpg";
 import stream2ProfileImg from "../streams/tina-mother-within/profile.jpg";
+import stream2PreviewImg from "../streams/tina-mother-within/stream.webp";
 import stream3Img from "../streams/sia-courage-to-change/stream.jpg";
 import stream3ProfileImg from "../streams/sia-courage-to-change/profile.jpg";
+import stream3PreviewImg from "../streams/sia-courage-to-change/stream.webp";
 import stream4Img from "../streams/rag-n-bone-human/stream.jpg";
 import stream4ProfileImg from "../streams/rag-n-bone-human/profile.jpg";
+import stream4PreviewImg from "../streams/rag-n-bone-human/stream.webp";
 import stream5Img from "../streams/sadhguru-manifest/stream.jpg";
 import stream5ProfileImg from "../streams/sadhguru-manifest/profile.jpg";
+import stream5PreviewImg from "../streams/sadhguru-manifest//stream.webp";
 import stream6Img from "../streams/pharell-williams-freedom/stream.jpg";
 import stream6ProfileImg from "../streams/pharell-williams-freedom/profile.jpg";
-
+import stream6PreviewImg from "../streams/pharell-williams-freedom/stream.webp";
 import stream7Img from "../streams/will-smith-men-in-black/stream.jpg";
 import stream7ProfileImg from "../streams/will-smith-men-in-black/profile.jpg";
+import stream7PreviewImg from "../streams/will-smith-men-in-black//stream.webp";
 import stream8Img from "../streams/imagine-dragons-whatever/stream.jpg";
 import stream8ProfileImg from "../streams/imagine-dragons-whatever/profile.jpg";
-
+import stream8PreviewImg from "../streams/imagine-dragons-whatever/stream.webp";
 import stream9Img from "../streams/coldplay-adventure-of-a-lifetime/stream.jpg";
 import stream9ProfileImg from "../streams/coldplay-adventure-of-a-lifetime/profile.jpg";
+import stream9PreviewImg from "../streams/coldplay-adventure-of-a-lifetime/stream.webp";
 import stream10Img from "../streams/katy-perry-dark-horse/stream.jpg";
 import stream10ProfileImg from "../streams/katy-perry-dark-horse/profile.jpg";
+import stream10PreviewImg from "../streams/katy-perry-dark-horse/stream.webp";
 import stream11Img from "../streams/ed-sheeran-shape-of-you/stream.jpg";
 import stream11ProfileImg from "../streams/ed-sheeran-shape-of-you/profile.jpg";
+import stream11PreviewImg from "../streams/ed-sheeran-shape-of-you/stream.jpg";
 import stream12Img from "../streams/linkin-park-talking-to-myself/stream.jpg";
 import stream12ProfileImg from "../streams/linkin-park-talking-to-myself/profile.jpg";
+import stream12PreviewImg from "../streams/linkin-park-talking-to-myself/stream.jpg";
+import stream13Img from "../streams/bon-jovi-its-my-life/stream.jpg";
+import stream13ProfileImg from "../streams/bon-jovi-its-my-life/profile.jpg";
+import stream13PreviewImg from "../streams/bon-jovi-its-my-life/stream.jpg";
 
 import stream1Vid from "../streams/c-bool-golden-rules/stream.webm";
 import stream2Vid from "../streams/tina-mother-within/stream.webm";
@@ -37,6 +50,7 @@ import stream9Vid from "../streams/coldplay-adventure-of-a-lifetime/stream.webm"
 import stream10Vid from "../streams/katy-perry-dark-horse/stream.webm";
 import stream11Vid from "../streams/ed-sheeran-shape-of-you/stream.mp4";
 import stream12Vid from "../streams/linkin-park-talking-to-myself/stream.mp4";
+import stream13Vid from "../streams/bon-jovi-its-my-life/stream.webm";
 
 const Streams = [
   {
@@ -57,6 +71,7 @@ const Streams = [
     image: stream1Img,
     video: stream1Vid,
     profileImage: stream1ProfileImg,
+    previewImage: stream1PreviewImg,
   },
   {
     id: "Wul9vbHqYDA",
@@ -76,6 +91,7 @@ const Streams = [
     image: stream2Img,
     video: stream2Vid,
     profileImage: stream2ProfileImg,
+    previewImage: stream2PreviewImg,
   },
   {
     id: "XnSTfwI9cPo",
@@ -93,6 +109,7 @@ const Streams = [
     image: stream3Img,
     video: stream3Vid,
     profileImage: stream3ProfileImg,
+    previewImage: stream3PreviewImg,
   },
   {
     id: "L3wKzyIN1yk",
@@ -112,6 +129,7 @@ const Streams = [
     image: stream4Img,
     video: stream4Vid,
     profileImage: stream4ProfileImg,
+    previewImage: stream4PreviewImg,
   },
   {
     id: "UwGSgJytufY",
@@ -129,6 +147,7 @@ const Streams = [
     image: stream5Img,
     video: stream5Vid,
     profileImage: stream5ProfileImg,
+    previewImage: stream5PreviewImg,
   },
   {
     id: "LlY90lG_Fuw",
@@ -147,6 +166,7 @@ const Streams = [
     image: stream6Img,
     video: stream6Vid,
     profileImage: stream6ProfileImg,
+    previewImage: stream6PreviewImg,
   },
   {
     id: "fiBLgEx6svA",
@@ -165,6 +185,7 @@ const Streams = [
     image: stream7Img,
     video: stream7Vid,
     profileImage: stream7ProfileImg,
+    previewImage: stream7PreviewImg,
   },
   {
     id: "gOsM-DYAEhY",
@@ -184,6 +205,7 @@ const Streams = [
     image: stream8Img,
     video: stream8Vid,
     profileImage: stream8ProfileImg,
+    previewImage: stream8PreviewImg,
   },
   {
     id: "QtXby3twMmI",
@@ -201,6 +223,7 @@ const Streams = [
     image: stream9Img,
     video: stream9Vid,
     profileImage: stream9ProfileImg,
+    previewImage: stream9PreviewImg,
   },
   {
     id: "0KSOMA3QBU0",
@@ -219,6 +242,7 @@ const Streams = [
     image: stream10Img,
     video: stream10Vid,
     profileImage: stream10ProfileImg,
+    previewImage: stream10PreviewImg,
   },
 
   {
@@ -238,6 +262,7 @@ const Streams = [
     image: stream11Img,
     video: stream11Vid,
     profileImage: stream11ProfileImg,
+    previewImage: stream11PreviewImg,
   },
   {
     id: "lvs68OKOquM",
@@ -256,6 +281,26 @@ const Streams = [
     image: stream12Img,
     video: stream12Vid,
     profileImage: stream12ProfileImg,
+    previewImage: stream12PreviewImg,
+  },
+  {
+    id: "vx2u5uUu3DE",
+    tags: ["BonJovi", "itsMyLife", "Remastered"],
+    title: "Bon Jovi - It's My Life (Official Music Video)",
+    views: "1,023,018,894",
+    viewsSmall: "1B",
+    releaseDate: "Jun 17, 2009",
+    releaseAgo: "12 years ago",
+    author: "Bon Jovi",
+    subscribers: "6.26M",
+    likes: "5.1M",
+    unlikes: "169K",
+    description: `New album ‘2020’ out now
+    https://BonJovi.lnk.to/2020-TheAlbum`,
+    image: stream13Img,
+    video: stream13Vid,
+    profileImage: stream13ProfileImg,
+    previewImage: stream13PreviewImg,
   },
 ];
 

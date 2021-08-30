@@ -660,7 +660,10 @@ html {
           width: 16.8rem;
           height: 9.4rem;
           margin-right: 0.6rem;
+          flex-shrink: 0;
+          object-fit: cover;
         }
+
         .item-desc {
           .desc-title {
             font-size: 1.4rem;
