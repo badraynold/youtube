@@ -497,6 +497,36 @@ html {
       .video-stream {
         width: 100%;
       }
+      .video-central {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        fill: var(--white-color);
+        transform: translate(-50%, -50%);
+        .central-icon {
+          opacity: 0.6;
+          width: 15rem;
+          height: 15rem;
+          padding: 0;
+          background: var(--gray-200-color);
+          transition: all 0.5s;
+          animation: central 0.5s;
+
+          @keyframes central {
+            from {
+              opacity: 0.6;
+              width: 15rem;
+              height: 15rem;
+            }
+
+            to {
+              opacity: 0;
+              width: 20rem;
+              height: 20rem;
+            }
+          }
+        }
+      }
       .video-controls {
         position: absolute;
         bottom: 0rem;

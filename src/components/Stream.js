@@ -21,6 +21,8 @@ const Stream = (props) => {
   const [visibleControls, setVisibleControls] = useState(false);
   const [visibleVolume, setVisibleVolume] = useState(false);
 
+  const [centralIcon, setCentralIcon] = useState(true);
+
   const [progressVideo, setProgressVideo] = useState(0);
   const stream = props.stream;
 
@@ -108,6 +110,12 @@ const Stream = (props) => {
     videoRef.current.volume = vol / 100;
   };
 
+  const handleClick = (e) => {
+    if (e.target === videoRef.current) {
+      setCentralIcon(true);
+      setPlayVideo(!playVideo);
+    }
+  };
   useEffect(() => {
     if (volumeClicked) {
       window.addEventListener("mousemove", handleMouseMove);
@@ -178,6 +186,10 @@ const Stream = (props) => {
     }
   }, [onVideo, volumeClicked]);
 
+  // useEffect(() => {
+  //   console.log(centralIcon);
+  // }, [centralIcon]);
+
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
       setVisibleVolume(true);
@@ -193,10 +205,19 @@ const Stream = (props) => {
       ref={videoWrapperRef}
       onMouseEnter={() => setOnVideo(true)}
       onMouseLeave={() => setOnVideo(false)}
+      onClick={(e) => handleClick(e)}
     >
       <video className="video-stream" autoPlay controls={false} ref={videoRef}>
         <source src={videoSrc} />
       </video>
+      {centralIcon ? (
+        <div
+          className="video-central"
+          onAnimationEnd={() => setCentralIcon(false)}
+        >
+          <Icon icon={playVideo ? "play" : "pause"} className="central-icon" />
+        </div>
+      ) : null}
 
       <div
         className={visibleControls ? "video-controls active" : "video-controls"}
