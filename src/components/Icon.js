@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
+import { useEffect } from "react/cjs/react.development";
 
 const Icon = (props) => {
   let icon;
@@ -9,10 +10,13 @@ const Icon = (props) => {
   }
 
   let classes = props.className ? baseClass + " " + props.className : baseClass;
+  const [phase, setPhase] = useState(false);
   const [mouseDown, setMouseDown] = useState(false);
+  const [background, setBackground] = useState(false);
+
   const iconRef = useRef();
 
-  if (mouseDown) {
+  if (background) {
     classes += " active";
   }
 
@@ -21,6 +25,26 @@ const Icon = (props) => {
       props.onClick(e);
     }
   };
+
+  const handleMouseUp = (e) => {
+    setMouseDown(false);
+  };
+
+  useEffect(() => {
+    if (mouseDown || phase) {
+      setBackground(true);
+    } else {
+      setBackground(false);
+    }
+  }, [mouseDown, phase]);
+
+  useEffect(() => {
+    if (mouseDown) {
+      setPhase(true);
+    }
+    window.addEventListener("mouseup", handleMouseUp);
+    return () => window.removeEventListener("mouseup", handleMouseUp);
+  }, [mouseDown]);
 
   switch (props.icon) {
     case "search":
@@ -630,6 +654,7 @@ const Icon = (props) => {
       ref={iconRef}
       onMouseDown={() => setMouseDown(true)}
       onMouseUp={() => setMouseDown(false)}
+      onTransitionEnd={() => setPhase(false)}
     >
       {icon}
     </div>

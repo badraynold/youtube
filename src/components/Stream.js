@@ -273,12 +273,12 @@ const Stream = (props) => {
   }, [props.stream.id]);
 
   useEffect(() => {
-    if (onVideo || volumeClicked || progressClicked) {
+    if (onVideo || volumeClicked || progressClicked || !playVideo) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
     }
-  }, [onVideo, volumeClicked, progressClicked]);
+  }, [onVideo, volumeClicked, progressClicked, playVideo]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
