@@ -116,6 +116,23 @@ const Stream = (props) => {
       setPlayVideo(!playVideo);
     }
   };
+
+  const handleFullScreenChange = (e) => {
+    if (!document.fullscreenElement) {
+      setFullscreenVideo(false);
+    }
+  };
+  useEffect(() => {
+    videoWrapperRef.current.addEventListener(
+      "fullscreenchange",
+      handleFullScreenChange
+    );
+    return () =>
+      videoWrapperRef.current.removeEventListener(
+        "fullscreenchange",
+        handleFullScreenChange
+      );
+  });
   useEffect(() => {
     if (volumeClicked) {
       window.addEventListener("mousemove", handleMouseMove);
