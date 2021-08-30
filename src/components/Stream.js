@@ -24,6 +24,7 @@ const Stream = (props) => {
   const [centralIcon, setCentralIcon] = useState(true);
 
   const [progressVideo, setProgressVideo] = useState(0);
+  const [timeUpdated, setTimeUpdated] = useState(false);
   const stream = props.stream;
 
   const videoRef = useRef();
@@ -52,6 +53,7 @@ const Stream = (props) => {
     setCurrentTime(`${ms.minutes}:${ms.seconds}`);
     const tms = getMinutesSeconds(videoRef.current.duration);
     setTotalTime(`${tms.minutes}:${tms.seconds}`);
+    setTimeUpdated(true);
   };
 
   const getMinutesSeconds = (t) => {
@@ -192,6 +194,7 @@ const Stream = (props) => {
     if (prevVideo.current !== props.stream.id) {
       videoRef.current.load();
       prevVideo.current = props.stream.id;
+      setTimeUpdated(false);
     }
   }, [props.stream.id]);
 
@@ -202,10 +205,6 @@ const Stream = (props) => {
       setVisibleControls(false);
     }
   }, [onVideo, volumeClicked]);
-
-  // useEffect(() => {
-  //   console.log(centralIcon);
-  // }, [centralIcon]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
@@ -298,9 +297,13 @@ const Stream = (props) => {
               ></div>
             </div>
           </div>
-          <div className="time-current">{currentTime}</div>
-          <div className="time-separator">/</div>
-          <div className="time-duration">{totalTime}</div>
+          {timeUpdated ? (
+            <>
+              <div className="time-current">{currentTime}</div>
+              <div className="time-separator">/</div>
+              <div className="time-duration">{totalTime}</div>
+            </>
+          ) : null}
 
           <div className="icons-right">
             <Tooltip message="Subtitles/closed captions (c)">
@@ -326,7 +329,11 @@ const Stream = (props) => {
                 <Icon icon="theater" variant="player" />
               </div>
             </Tooltip>
-            <Tooltip message="Full screen (f)">
+            <Tooltip
+              message={
+                fullscreenVideo ? "Exit full screen (f)" : "Full screen (f)"
+              }
+            >
               <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
                 {fullscreenVideo ? (
                   <Icon icon="fullscreen-exit" variant="player" />
