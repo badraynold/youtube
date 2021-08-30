@@ -13,6 +13,29 @@ const Stream = (props) => {
   const [currentTime, setCurrentTime] = useState("");
   const [totalTime, setTotalTime] = useState("");
 
+  const [onVideo, setOnVideo] = useState(false);
+  const [onVolumeIcon, setOnVolumeIcon] = useState(false);
+  const [onVolumeBar, setOnVolumeBar] = useState(false);
+
+  const [visibleControls, setVisibleControls] = useState(false);
+  const [visibleVolume, setVisibleVolume] = useState(false);
+
+  useEffect(() => {
+    if (onVideo || volumeClicked) {
+      setVisibleControls(true);
+    } else {
+      setVisibleControls(false);
+    }
+  }, [onVideo, volumeClicked]);
+
+  useEffect(() => {
+    if (onVolumeIcon || onVolumeBar || volumeClicked) {
+      setVisibleVolume(true);
+    } else {
+      setVisibleVolume(false);
+    }
+  }, [onVolumeIcon, onVolumeBar, volumeClicked]);
+
   const [progressVideo, setProgressVideo] = useState(0);
   const stream = props.stream;
 
@@ -32,58 +55,6 @@ const Stream = (props) => {
   const nextId = Streams[nextIdx].id;
 
   const videoSrc = stream.video;
-
-  useEffect(() => {
-    if (playVideo) {
-      videoRef.current.play();
-    } else {
-      videoRef.current.pause();
-    }
-  }, [playVideo]);
-
-  useEffect(() => {
-    if (fullscreenVideo) {
-      console.log("entering fs");
-      if (videoWrapperRef.current.requestFullscreen) {
-        videoWrapperRef.current.requestFullscreen();
-      } else if (videoWrapperRef.current.webkitRequestFullscreen) {
-        /* Safari */
-        videoWrapperRef.current.webkitRequestFullscreen();
-      } else if (videoWrapperRef.current.msRequestFullscreen) {
-        /* IE11 */
-        videoWrapperRef.current.msRequestFullscreen();
-      }
-    } else {
-      if (document.fullscreenElement) {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          /* Safari */
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          /* IE11 */
-          document.msExitFullscreen();
-        }
-      }
-    }
-  }, [fullscreenVideo]);
-
-  useEffect(() => {
-    if (muteVideo) {
-      videoRef.current.muted = true;
-      setVolumeVideo(0);
-    } else {
-      videoRef.current.muted = false;
-      setVolumeVideo(videoRef.current.volume * 100);
-    }
-  }, [muteVideo]);
-
-  useEffect(() => {
-    if (prevVideo.current !== props.stream.id) {
-      videoRef.current.load();
-      prevVideo.current = props.stream.id;
-    }
-  }, [props.stream.id]);
 
   const handleTimeUpdate = (e) => {
     const progress =
@@ -152,6 +123,16 @@ const Stream = (props) => {
     videoRef.current.volume = vol / 100;
   };
 
+  const handleMouseEnter = (e) => {
+    setVisibleControls(true);
+  };
+
+  const handleMouseLeave = (e) => {
+    if (!volumeClicked) {
+      setVisibleControls(false);
+    }
+  };
+
   useEffect(() => {
     if (volumeClicked) {
       window.addEventListener("mousemove", handleMouseMove);
@@ -163,16 +144,72 @@ const Stream = (props) => {
     };
   }, [volumeClicked]);
 
+  useEffect(() => {
+    if (playVideo) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [playVideo]);
+
+  useEffect(() => {
+    if (fullscreenVideo) {
+      if (videoWrapperRef.current.requestFullscreen) {
+        videoWrapperRef.current.requestFullscreen();
+      } else if (videoWrapperRef.current.webkitRequestFullscreen) {
+        /* Safari */
+        videoWrapperRef.current.webkitRequestFullscreen();
+      } else if (videoWrapperRef.current.msRequestFullscreen) {
+        /* IE11 */
+        videoWrapperRef.current.msRequestFullscreen();
+      }
+    } else {
+      if (document.fullscreenElement) {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          /* Safari */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          /* IE11 */
+          document.msExitFullscreen();
+        }
+      }
+    }
+  }, [fullscreenVideo]);
+
+  useEffect(() => {
+    if (muteVideo) {
+      videoRef.current.muted = true;
+      setVolumeVideo(0);
+    } else {
+      videoRef.current.muted = false;
+      setVolumeVideo(videoRef.current.volume * 100);
+    }
+  }, [muteVideo]);
+
+  useEffect(() => {
+    if (prevVideo.current !== props.stream.id) {
+      videoRef.current.load();
+      prevVideo.current = props.stream.id;
+    }
+  }, [props.stream.id]);
+
   return (
     <div
       className="video-wrapper"
       onTimeUpdate={handleTimeUpdate}
       ref={videoWrapperRef}
+      onMouseEnter={() => setOnVideo(true)}
+      onMouseLeave={() => setOnVideo(false)}
     >
       <video className="video-stream" autoPlay controls={false} ref={videoRef}>
         <source src={videoSrc} />
       </video>
-      <div className="video-controls">
+
+      <div
+        className={visibleControls ? "video-controls active" : "video-controls"}
+      >
         <div className="progress">
           <div
             className="progress-bar"
@@ -196,18 +233,25 @@ const Stream = (props) => {
             <Icon icon="next" variant="player" />
           </Link>
 
-          {muteVideo ? (
-            <div onClick={() => setMuteVideo(false)}>
-              <Icon icon="muted" variant="player" />
-            </div>
-          ) : (
-            <div onClick={() => setMuteVideo(true)}>
-              <Icon icon="mute" variant="player" />
-            </div>
-          )}
           <div
-            className="volume-wrapper"
+            onClick={() => setMuteVideo(false)}
+            onMouseEnter={() => setOnVolumeIcon(true)}
+            onMouseLeave={() => setOnVolumeIcon(false)}
+          >
+            {muteVideo ? (
+              <Icon icon="muted" variant="player" />
+            ) : (
+              <Icon icon="mute" variant="player" />
+            )}
+          </div>
+
+          <div
+            className={
+              visibleVolume ? "volume-wrapper active" : "volume-wrapper"
+            }
             onMouseDown={handleMouseDown}
+            onMouseEnter={() => setOnVolumeBar(true)}
+            onMouseLeave={() => setOnVolumeBar(false)}
             ref={volumeRef}
           >
             <div className="volume" ref={volumeInnerRef}>
@@ -228,6 +272,21 @@ const Stream = (props) => {
           <Icon icon="size" variant="player" />
           <Icon icon="fullscreen" variant="player" /> */}
           <div className="icons-right">
+            <div>
+              <Icon icon="subtitles" variant="player" />
+            </div>
+
+            <div>
+              <Icon icon="settings" variant="player" />
+            </div>
+
+            <div>
+              <Icon icon="miniplayer" variant="player" />
+            </div>
+
+            <div>
+              <Icon icon="theater" variant="player" />
+            </div>
             <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
               {fullscreenVideo ? (
                 <Icon icon="fullscreen-exit" variant="player" />

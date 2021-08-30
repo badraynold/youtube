@@ -463,6 +463,12 @@ html {
         bottom: 0rem;
         width: 100%;
         padding: 0rem 1rem;
+        opacity: 0;
+        transition: opacity 0.2s;
+        &.active {
+          opacity: 1;
+        }
+
         .progress {
           position: relative;
           width: 100%;
@@ -478,11 +484,6 @@ html {
           display: flex;
           fill: var(--white-color);
           margin-bottom: 0.5rem;
-          &:hover {
-            .volume-wrapper {
-              width: 6.4rem;
-            }
-          }
 
           .volume-wrapper {
             width: 0rem;
@@ -493,6 +494,10 @@ html {
             user-select: none;
             overflow: hidden;
             transition: width 0.2s;
+
+            &.active {
+              width: 6.4rem !important;
+            }
 
             .volume {
               margin: 0 0.6rem;
@@ -537,7 +542,18 @@ html {
           }
 
           .icons-right {
+            display: flex;
             margin-left: auto;
+          }
+        }
+      }
+      &:xhover {
+        .video-controls {
+          opacity: 1;
+          .buttons {
+            .volume-wrapper {
+              width: 6.4rem;
+            }
           }
         }
       }

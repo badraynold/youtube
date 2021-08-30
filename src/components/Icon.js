@@ -175,7 +175,7 @@ const Icon = (props) => {
         </svg>
       );
       break;
-    case "size":
+    case "theater":
       icon = (
         <svg height="100%" version="1.1" viewBox="0 0 36 36" width="100%">
           <path
