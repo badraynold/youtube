@@ -265,9 +265,11 @@ const Stream = (props) => {
           <div className="time-duration">{totalTime}</div>
 
           <div className="icons-right">
-            <div>
-              <Icon icon="subtitles" variant="player" />
-            </div>
+            <Tooltip message="Subtitles/closed captions (c)">
+              <div>
+                <Icon icon="subtitles" variant="player" />
+              </div>
+            </Tooltip>
 
             <Tooltip message="Settings">
               <div>

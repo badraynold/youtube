@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
+import Tooltip from "./components/Tooltip";
 
 import {
   BrowserRouter as Router,
@@ -54,16 +55,25 @@ const App = (props) => {
               placeholder="Search"
             ></input>
             <label className="search-label">
-              <Icon icon="search" />
+              <Tooltip message="Search" position="bottom">
+                <Icon icon="search" />
+              </Tooltip>
             </label>
           </div>
-
-          <Icon icon="mic" className="navbar-mic" />
+          <Tooltip message="Search with your voice" position="bottom">
+            <Icon icon="mic" className="navbar-mic" />
+          </Tooltip>
         </div>
         <div className="navbar-end">
-          <Icon icon="camera" />
-          <Icon icon="menu" />
-          <Icon icon="notification" />
+          <Tooltip message="Create" position="bottom">
+            <Icon icon="camera" />
+          </Tooltip>
+          <Tooltip message="YouTube apps" position="bottom">
+            <Icon icon="menu" />
+          </Tooltip>
+          <Tooltip message="Notifications" position="bottom">
+            <Icon icon="notification" />
+          </Tooltip>
           <div className="navbar-user">R</div>
         </div>
       </nav>
