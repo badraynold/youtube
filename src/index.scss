@@ -537,16 +537,40 @@ html {
         &.active {
           opacity: 1;
         }
-
-        .progress {
-          position: relative;
+        .progress-wrapper {
           width: 100%;
-          height: 0.3rem;
-          background-color: var(--gray-400-color);
-          .progress-bar {
-            position: absolute;
-            height: 100%;
-            background-color: var(--red-color);
+          height: 1rem;
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+          .progress {
+            position: relative;
+            width: 100%;
+            height: 0.3rem;
+            background-color: var(--gray-400-color);
+
+            .progress-bar {
+              position: absolute;
+              height: 100%;
+              background-color: var(--red-color);
+            }
+
+            &:hover {
+              height: 0.5rem;
+              .progress-bar {
+                &:before {
+                  content: "";
+                  position: absolute;
+                  top: 50%;
+                  right: -0.6rem;
+                  width: 1.2rem;
+                  height: 1.2rem;
+                  transform: translateY(-50%);
+                  background: red;
+                  border-radius: 50%;
+                }
+              }
+            }
           }
         }
         .buttons {

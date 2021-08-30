@@ -238,14 +238,16 @@ const Stream = (props) => {
       <div
         className={visibleControls ? "video-controls active" : "video-controls"}
       >
-        <div className="progress">
-          <div
-            className="progress-bar"
-            style={{
-              width: `${progressVideo}%`,
-            }}
-            ref={progressVideoRef}
-          ></div>
+        <div className="progress-wrapper">
+          <div className="progress">
+            <div
+              className="progress-bar"
+              style={{
+                width: `${progressVideo}%`,
+              }}
+              ref={progressVideoRef}
+            ></div>
+          </div>
         </div>
         <div className="buttons">
           {playVideo ? (
