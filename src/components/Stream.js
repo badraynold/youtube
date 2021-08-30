@@ -24,6 +24,8 @@ const Stream = (props) => {
   const [centralIcon, setCentralIcon] = useState(true);
 
   const [progressVideo, setProgressVideo] = useState(0);
+  const [progressClicked, setProgressClicked] = useState(false);
+
   const [timeUpdated, setTimeUpdated] = useState(false);
   const stream = props.stream;
 
@@ -33,6 +35,8 @@ const Stream = (props) => {
   const prevVideo = useRef();
   const volumeRef = useRef();
   const volumeInnerRef = useRef();
+
+  const progressInnerRef = useRef();
 
   const progressVideoRef = useRef();
   const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
@@ -93,28 +97,67 @@ const Stream = (props) => {
     setRealVolumeVideo(pct);
   };
 
-  const handleMouseDown = (e) => {
+  const handleProgressSet = (e) => {
+    const progressRect = progressInnerRef.current.getClientRects()[0];
+    let x = e.clientX - progressRect.x;
+
+    if (x < 0) {
+      x = 0;
+    } else if (x > progressRect.width) {
+      x = progressRect.width;
+    }
+
+    const pct = (x / progressRect.width) * 100;
+    setProgressVideo(pct);
+    setRealProgress(pct);
+    videoRef.current.pause();
+  };
+
+  const handleVolumeMouseDown = (e) => {
     setVolumeClicked(true);
     handleVolumeSet(e);
   };
 
-  const handleMouseMove = (e) => {
+  const handleProgressMouseDown = (e) => {
+    setProgressClicked(true);
+    handleProgressSet(e);
+  };
+
+  const handleVolumeMouseMove = (e) => {
     if (volumeClicked) {
       handleVolumeSet(e);
     }
   };
+  const handleProgressMouseMove = (e) => {
+    if (progressClicked) {
+      handleProgressSet(e);
+    }
+  };
 
-  const handleMouseUp = (e) => {
+  const handleVolumeMouseUp = (e) => {
     setVolumeClicked(false);
+  };
+
+  const handleProgressMouseUp = (e) => {
+    setProgressClicked(false);
+
+    if (playVideo) {
+      videoRef.current.play();
+    }
   };
 
   const setRealVolumeVideo = (vol) => {
     videoRef.current.volume = vol / 100;
   };
 
+  const setRealProgress = (pct) => {
+    videoRef.current.currentTime = (pct / 100) * videoRef.current.duration;
+  };
+
   const handleClick = (e) => {
     if (e.target === videoRef.current) {
       setCentralIcon(true);
+
       setPlayVideo(!playVideo);
     }
   };
@@ -137,14 +180,25 @@ const Stream = (props) => {
   });
   useEffect(() => {
     if (volumeClicked) {
-      window.addEventListener("mousemove", handleMouseMove);
-      window.addEventListener("mouseup", handleMouseUp);
+      window.addEventListener("mousemove", handleVolumeMouseMove);
+      window.addEventListener("mouseup", handleVolumeMouseUp);
     }
     return () => {
-      window.removeEventListener("mouseup", handleMouseUp);
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseup", handleVolumeMouseUp);
+      window.removeEventListener("mousemove", handleVolumeMouseMove);
     };
   }, [volumeClicked]);
+
+  useEffect(() => {
+    if (progressClicked) {
+      window.addEventListener("mousemove", handleProgressMouseMove);
+      window.addEventListener("mouseup", handleProgressMouseUp);
+    }
+    return () => {
+      window.removeEventListener("mouseup", handleProgressMouseUp);
+      window.removeEventListener("mousemove", handleProgressMouseMove);
+    };
+  }, [progressClicked]);
 
   useEffect(() => {
     if (playVideo) {
@@ -238,8 +292,11 @@ const Stream = (props) => {
       <div
         className={visibleControls ? "video-controls active" : "video-controls"}
       >
-        <div className="progress-wrapper">
-          <div className="progress">
+        <div
+          className="progress-wrapper"
+          onMouseDown={(e) => handleProgressMouseDown(e)}
+        >
+          <div className="progress" ref={progressInnerRef}>
             <div
               className="progress-bar"
               style={{
@@ -287,7 +344,7 @@ const Stream = (props) => {
             className={
               visibleVolume ? "volume-wrapper active" : "volume-wrapper"
             }
-            onMouseDown={handleMouseDown}
+            onMouseDown={handleVolumeMouseDown}
             onMouseEnter={() => setOnVolumeBar(true)}
             onMouseLeave={() => setOnVolumeBar(false)}
             ref={volumeRef}
