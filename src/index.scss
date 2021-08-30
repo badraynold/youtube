@@ -498,6 +498,8 @@ html {
     .video-wrapper {
       position: relative;
       width: 100%;
+      display: flex;
+      align-items: center;
 
       .video-stream {
         width: 100%;
