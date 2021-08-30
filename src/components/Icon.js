@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { useRef } from "react";
+
 const Icon = (props) => {
   let icon;
   let baseClass = "yt-icon";
@@ -5,9 +8,13 @@ const Icon = (props) => {
     baseClass = "yt-player-icon";
   }
 
-  const classes = props.className
-    ? baseClass + " " + props.className
-    : baseClass;
+  let classes = props.className ? baseClass + " " + props.className : baseClass;
+  const [mouseDown, setMouseDown] = useState(false);
+  const iconRef = useRef();
+
+  if (mouseDown) {
+    classes += " active";
+  }
 
   const onClick = (e) => {
     if (props.onClick) {
@@ -617,7 +624,13 @@ const Icon = (props) => {
   }
 
   return (
-    <div className={classes} onClick={onClick}>
+    <div
+      className={classes}
+      onClick={onClick}
+      ref={iconRef}
+      onMouseDown={() => setMouseDown(true)}
+      onMouseUp={() => setMouseDown(false)}
+    >
       {icon}
     </div>
   );

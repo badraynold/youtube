@@ -304,6 +304,7 @@ const Stream = (props) => {
       onMouseEnter={() => setOnVideo(true)}
       onMouseLeave={() => setOnVideo(false)}
       onClick={(e) => handleClick(e)}
+      onDoubleClick={() => setFullscreenVideo(!fullscreenVideo)}
     >
       <video
         className="video-stream"
