@@ -123,16 +123,6 @@ const Stream = (props) => {
     videoRef.current.volume = vol / 100;
   };
 
-  const handleMouseEnter = (e) => {
-    setVisibleControls(true);
-  };
-
-  const handleMouseLeave = (e) => {
-    if (!volumeClicked) {
-      setVisibleControls(false);
-    }
-  };
-
   useEffect(() => {
     if (volumeClicked) {
       window.addEventListener("mousemove", handleMouseMove);
@@ -234,7 +224,7 @@ const Stream = (props) => {
           </Link>
 
           <div
-            onClick={() => setMuteVideo(false)}
+            onClick={() => setMuteVideo(!muteVideo)}
             onMouseEnter={() => setOnVolumeIcon(true)}
             onMouseLeave={() => setOnVolumeIcon(false)}
           >
