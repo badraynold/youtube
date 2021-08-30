@@ -17,12 +17,14 @@ const Stream = (props) => {
   const [onVideo, setOnVideo] = useState(false);
   const [onVolumeIcon, setOnVolumeIcon] = useState(false);
   const [onVolumeBar, setOnVolumeBar] = useState(false);
+  const [onProgressBar, setOnProgressBar] = useState(false);
 
   const [visibleControls, setVisibleControls] = useState(false);
   const [visibleVolume, setVisibleVolume] = useState(false);
 
   const [centralIcon, setCentralIcon] = useState(true);
 
+  const [visibleProgress, setVisibleProgress] = useState(false);
   const [progressVideo, setProgressVideo] = useState(0);
   const [progressClicked, setProgressClicked] = useState(false);
 
@@ -36,6 +38,7 @@ const Stream = (props) => {
   const volumeRef = useRef();
   const volumeInnerRef = useRef();
 
+  const progressRef = useRef();
   const progressInnerRef = useRef();
 
   const progressVideoRef = useRef();
@@ -253,12 +256,12 @@ const Stream = (props) => {
   }, [props.stream.id]);
 
   useEffect(() => {
-    if (onVideo || volumeClicked) {
+    if (onVideo || volumeClicked || progressClicked) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
     }
-  }, [onVideo, volumeClicked]);
+  }, [onVideo, volumeClicked, progressClicked]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
@@ -267,6 +270,14 @@ const Stream = (props) => {
       setVisibleVolume(false);
     }
   }, [onVolumeIcon, onVolumeBar, volumeClicked]);
+
+  useEffect(() => {
+    if (onProgressBar || progressClicked) {
+      setVisibleProgress(true);
+    } else {
+      setVisibleProgress(false);
+    }
+  });
 
   return (
     <div
@@ -295,8 +306,14 @@ const Stream = (props) => {
         <div
           className="progress-wrapper"
           onMouseDown={(e) => handleProgressMouseDown(e)}
+          onMouseEnter={() => setOnProgressBar(true)}
+          onMouseLeave={() => setOnProgressBar(false)}
+          ref={progressRef}
         >
-          <div className="progress" ref={progressInnerRef}>
+          <div
+            className={visibleProgress ? "progress active" : "progress"}
+            ref={progressInnerRef}
+          >
             <div
               className="progress-bar"
               style={{
