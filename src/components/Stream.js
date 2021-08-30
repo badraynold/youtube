@@ -2,7 +2,7 @@ import Streams from "../components/Streams";
 import Icon from "../components/Icon";
 import Tooltip from "./Tooltip";
 import { useRef, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 const Stream = (props) => {
   const [playVideo, setPlayVideo] = useState(false);
@@ -42,6 +42,9 @@ const Stream = (props) => {
   const progressInnerRef = useRef();
 
   const progressVideoRef = useRef();
+
+  const history = useHistory();
+
   const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
   let nextIdx = currentIdx + 1;
   if (nextIdx >= Streams.length) {
@@ -160,7 +163,6 @@ const Stream = (props) => {
   const handleClick = (e) => {
     if (e.target === videoRef.current) {
       setCentralIcon(true);
-
       setPlayVideo(!playVideo);
     }
   };
@@ -170,16 +172,29 @@ const Stream = (props) => {
       setFullscreenVideo(false);
     }
   };
+
+  const handleEndVideo = (e) => {
+    const currentIdx = Streams.findIndex((item) => item.id === props.stream.id);
+    let nextIdx = currentIdx + 1;
+    if (nextIdx >= Streams.length) {
+      nextIdx = 0;
+    }
+    const nextId = Streams[nextIdx].id;
+    history.push(`/watch?v=${nextId}`);
+  };
+
+  const handleVideoLoaded = (e) => {
+    if (playVideo) {
+      videoRef.current.play();
+    }
+  };
+
+  // use effects
   useEffect(() => {
     videoWrapperRef.current.addEventListener(
       "fullscreenchange",
       handleFullScreenChange
     );
-    return () =>
-      videoWrapperRef.current.removeEventListener(
-        "fullscreenchange",
-        handleFullScreenChange
-      );
   });
   useEffect(() => {
     if (volumeClicked) {
@@ -187,10 +202,10 @@ const Stream = (props) => {
       window.addEventListener("mouseup", handleVolumeMouseUp);
     }
     return () => {
-      window.removeEventListener("mouseup", handleVolumeMouseUp);
       window.removeEventListener("mousemove", handleVolumeMouseMove);
+      window.removeEventListener("mouseup", handleVolumeMouseUp);
     };
-  }, [volumeClicked]);
+  });
 
   useEffect(() => {
     if (progressClicked) {
@@ -198,10 +213,10 @@ const Stream = (props) => {
       window.addEventListener("mouseup", handleProgressMouseUp);
     }
     return () => {
-      window.removeEventListener("mouseup", handleProgressMouseUp);
       window.removeEventListener("mousemove", handleProgressMouseMove);
+      window.removeEventListener("mouseup", handleProgressMouseUp);
     };
-  }, [progressClicked]);
+  });
 
   useEffect(() => {
     if (playVideo) {
@@ -252,6 +267,8 @@ const Stream = (props) => {
       videoRef.current.load();
       prevVideo.current = props.stream.id;
       setTimeUpdated(false);
+      setProgressVideo(0);
+      // setPlayVideo(true);
     }
   }, [props.stream.id]);
 
@@ -277,7 +294,7 @@ const Stream = (props) => {
     } else {
       setVisibleProgress(false);
     }
-  });
+  }, [onProgressBar, progressClicked]);
 
   return (
     <div
@@ -288,7 +305,13 @@ const Stream = (props) => {
       onMouseLeave={() => setOnVideo(false)}
       onClick={(e) => handleClick(e)}
     >
-      <video className="video-stream" autoPlay controls={false} ref={videoRef}>
+      <video
+        className="video-stream"
+        controls={false}
+        ref={videoRef}
+        onLoadedData={(e) => handleVideoLoaded(e)}
+        onEnded={(e) => handleEndVideo(e)}
+      >
         <source src={videoSrc} />
       </video>
       {centralIcon ? (

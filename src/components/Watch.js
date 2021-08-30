@@ -1,12 +1,9 @@
 import Stream from "../components/Stream";
 import StreamDescription from "./StreamDescription";
 import StreamProfile from "./StreamProfile";
-
 import Streams from "../components/Streams";
-import Icon from "../components/Icon";
 
 import { Link } from "react-router-dom";
-import profileImg from "../streams/ed-sheeran-shape-of-you/profile.jpg";
 
 const Watch = (props) => {
   const videoId = new URLSearchParams(props.location.search).get("v");
