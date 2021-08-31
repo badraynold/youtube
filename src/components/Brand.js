@@ -7,7 +7,7 @@ const Brand = (props) => {
       <a href="/" className="yt-logo-link">
         <img src={ytLogoImg} alt="Logo" />
       </a>
-      <span className="yt-logo-text">pl</span>
+      <span className="yt-logo-text">lokalnie</span>
     </div>
   );
 };

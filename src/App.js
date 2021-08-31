@@ -49,11 +49,20 @@ const App = (props) => {
         </div>
         <div className="navbar-mid">
           <div className="navbar-search">
-            <input
-              type="text"
-              className="search-input"
-              placeholder="Search"
-            ></input>
+            <div className="search-input-wrapper">
+              <input
+                type="text"
+                className="search-input"
+                placeholder="Search"
+              ></input>
+              <ul className="search-input-hints">
+                <li className="hint-item">
+                  czy religijny Jezus znał się na YouTube?
+                </li>
+                <li className="hint-item">czy prezes zawsze mówi prawdę?</li>
+                <li className="hint-item">Report search predictions</li>
+              </ul>
+            </div>
             <label className="search-label">
               <Tooltip message="Search" position="bottom">
                 <Icon icon="search" />
@@ -74,7 +83,20 @@ const App = (props) => {
           <Tooltip message="Notifications" position="bottom">
             <Icon icon="notification" />
           </Tooltip>
-          <div className="navbar-user">R</div>
+          <div className="navbar-user-wrapper">
+            <div className="navbar-user">R</div>
+            <div className="navbar-user-menu">
+              <div className="menu-header">
+                <div className="menu-logo">R</div>
+                <div className="menu-info">
+                  <div className="menu-name">Rafał Łukawski</div>
+                  <div className="menu-manage">Manage your Google Account</div>
+                </div>
+              </div>
+              {/* <li className="menu-item">Item1</li>
+              <li className="menu-item">Item2</li> */}
+            </div>
+          </div>
         </div>
       </nav>
 
