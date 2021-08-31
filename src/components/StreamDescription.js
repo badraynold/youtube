@@ -1,4 +1,5 @@
 import Icon from "../components/Icon";
+import Tooltip from "./Tooltip";
 
 const StreamDescription = (props) => {
   const stream = props.stream;
@@ -24,27 +25,37 @@ const StreamDescription = (props) => {
         </div>
         <div className="info-right">
           <div className="info-likes">
-            <span className="info-link">
-              <Icon icon="like" className="info-icon" />
-              <span className="info-text">{stream.likes}</span>
-            </span>
-            <span className="info-link">
-              <Icon icon="unlike" className="info-icon" />
-              <span className="info-text">{stream.unlikes}</span>
-            </span>
+            <Tooltip message="I like this" position="bottom">
+              <span className="info-link">
+                <Icon icon="like" className="info-icon" />
+                <span className="info-text">{stream.likes}</span>
+              </span>
+            </Tooltip>
+            <Tooltip message="I dislike this" position="bottom">
+              <span className="info-link">
+                <Icon icon="unlike" className="info-icon" />
+                <span className="info-text">{stream.unlikes}</span>
+              </span>
+            </Tooltip>
           </div>
-          <span className="info-link">
-            <Icon icon="share" className="info-icon" />
-            <span className="info-text">Share</span>
-          </span>
-          <span className="info-link">
-            <Icon icon="save" className="info-icon" />
-            <span className="info-text">Save</span>
-          </span>
-          <span className="info-link">
-            <Icon icon="description" className="info-icon" />
-            <span className="info-text">Description</span>
-          </span>
+          <Tooltip message="Share" position="bottom">
+            <span className="info-link">
+              <Icon icon="share" className="info-icon" />
+              <span className="info-text">Share</span>
+            </span>
+          </Tooltip>
+          <Tooltip message="Save" position="bottom">
+            <span className="info-link">
+              <Icon icon="save" className="info-icon" />
+              <span className="info-text">Save</span>
+            </span>
+          </Tooltip>
+          <Tooltip message="Open Description" position="bottom">
+            <span className="info-link">
+              <Icon icon="description" className="info-icon" />
+              <span className="info-text">Description</span>
+            </span>
+          </Tooltip>
           <span className="info-link last-link">
             <Icon icon="more" className="info-icon" />
           </span>
