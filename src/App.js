@@ -95,8 +95,21 @@ const App = (props) => {
                   <div className="menu-manage">Manage your Google Account</div>
                 </div>
               </div>
-              {/* <li className="menu-item">Item1</li>
-              <li className="menu-item">Item2</li> */}
+              <div className="menu-content">
+                <Icon icon="your-channel" />
+                <Icon icon="purchase-and-memberships" />
+                <Icon icon="youtube-studio" />
+                <Icon icon="switch-account" />
+                <Icon icon="apperance" />
+                <Icon icon="language" />
+                <Icon icon="location" />
+                <Icon icon="settings-2" />
+                <Icon icon="your-data" />
+                <Icon icon="help" />
+                <Icon icon="send-feedback" />
+                <Icon icon="keyboard-shortcuts" />
+                <Icon icon="right" />
+              </div>
             </div>
           </div>
         </div>

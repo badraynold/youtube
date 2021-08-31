@@ -30,6 +30,8 @@ html {
   --focus-color: #1c62b9;
   --blue-color: #065fd4;
   --cyprus-color: #004c3f;
+
+  --transparent-white-color: rgba(255, 255, 255, 0.98);
 }
 
 .yt-icon {
@@ -122,7 +124,7 @@ html {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.98);
+  background-color: var(--transparent-white-color);
   height: 5.6rem;
 
   padding-left: 2rem;
@@ -254,7 +256,7 @@ html {
         position: absolute;
         width: 30rem;
         left: -24rem;
-        background-color: var(--white-color);
+        background-color: var(--transparent-white-color);
 
         .menu-header {
           padding: 2.1rem 1.6rem;
