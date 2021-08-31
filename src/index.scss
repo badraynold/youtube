@@ -29,6 +29,7 @@ html {
   --primary-color: #333;
   --focus-color: #1c62b9;
   --blue-color: #065fd4;
+  --cyprus-color: #004c3f;
 }
 
 .yt-icon {
@@ -239,7 +240,7 @@ html {
       .navbar-user {
         width: 3.2rem;
         height: 3.2rem;
-        background: #004c3f;
+        background-color: var(--cyprus-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -252,16 +253,39 @@ html {
       .navbar-user-menu {
         position: absolute;
         width: 30rem;
-        left: -25rem;
-        background-color: red;
+        left: -24rem;
+        background-color: var(--white-color);
+
         .menu-header {
+          padding: 2.1rem 1.6rem;
+          display: flex;
+          column-gap: 1.6rem;
           .menu-logo {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            background-color: var(--cyprus-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white-color);
           }
-        }
-        .menu-info {
-          .menu-name {
-          }
-          .menu-manage {
+          .menu-info {
+            margin-top: 0.2rem;
+            border-bottom: 0.1rem solid var(--gray-800-color);
+            .menu-name {
+              font-size: 1.6rem;
+              font-weight: 500;
+              letter-spacing: 0.015rem;
+              margin-bottom: 1.1rem;
+            }
+            .menu-manage {
+              font-size: 1.4rem;
+              color: var(--blue-color);
+              letter-spacing: 0.02rem;
+              cursor: pointer;
+            }
           }
         }
       }

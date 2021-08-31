@@ -59,7 +59,9 @@ const App = (props) => {
                 <li className="hint-item">
                   czy religijny Jezus znał się na YouTube?
                 </li>
-                <li className="hint-item">czy prezes zawsze mówi prawdę?</li>
+                <li className="hint-item">
+                  czy można rozwinąć swoją kreatywność?
+                </li>
                 <li className="hint-item">Report search predictions</li>
               </ul>
             </div>
