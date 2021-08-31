@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRef } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useEffect } from "react";
 
 const Icon = (props) => {
   let icon;
@@ -771,10 +771,7 @@ const Icon = (props) => {
           focusable="false"
         >
           <g>
-            <path
-              d="M9.4,18.4l-0.7-0.7l5.6-5.6L8.6,6.4l0.7-0.7l6.4,6.4L9.4,18.4z"
-              class="style-scope yt-icon"
-            ></path>
+            <path d="M9.4,18.4l-0.7-0.7l5.6-5.6L8.6,6.4l0.7-0.7l6.4,6.4L9.4,18.4z"></path>
           </g>
         </svg>
       );
