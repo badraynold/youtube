@@ -33,6 +33,9 @@ const Icon = (props) => {
   useEffect(() => {
     if (mouseDown || phase) {
       setBackground(true);
+      setTimeout(() => {
+        setPhase(false);
+      }, 250);
     } else {
       setBackground(false);
     }
