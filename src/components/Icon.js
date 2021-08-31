@@ -659,7 +659,7 @@ const Icon = (props) => {
         </svg>
       );
       break;
-    case "purchase-and-memberships":
+    case "purchases-and-memberships":
       icon = (
         <svg
           viewBox="0 0 24 24"
@@ -775,6 +775,19 @@ const Icon = (props) => {
               d="M9.4,18.4l-0.7-0.7l5.6-5.6L8.6,6.4l0.7-0.7l6.4,6.4L9.4,18.4z"
               class="style-scope yt-icon"
             ></path>
+          </g>
+        </svg>
+      );
+      break;
+    case "sign-out":
+      icon = (
+        <svg
+          viewBox="0 0 24 24"
+          preserveAspectRatio="xMidYMid meet"
+          focusable="false"
+        >
+          <g>
+            <path d="M20,3v18H8v-1h11V4H8V3H20z M11.1,15.1l0.7,0.7l4.4-4.4l-4.4-4.4l-0.7,0.7l3.1,3.1H3v1h11.3L11.1,15.1z"></path>
           </g>
         </svg>
       );

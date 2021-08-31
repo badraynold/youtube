@@ -25,6 +25,17 @@ import traversyIcon from "./icons/traversy-media-icon.jpg";
 const App = (props) => {
   const asideRef = useRef();
   const [asideActive, setAsideActive] = useState(0);
+  const [userMenu, setUserMenu] = useState(false);
+
+  const disableUserMenu = () => {
+    setUserMenu(false);
+  };
+  useEffect(() => {
+    if (userMenu) {
+      window.addEventListener("click", disableUserMenu);
+    }
+    return () => window.removeEventListener("click", disableUserMenu);
+  }, [userMenu]);
 
   useEffect(() => {
     if (asideActive) {
@@ -86,8 +97,14 @@ const App = (props) => {
             <Icon icon="notification" />
           </Tooltip>
           <div className="navbar-user-wrapper">
-            <div className="navbar-user">R</div>
-            <div className="navbar-user-menu">
+            <div className="navbar-user" onClick={() => setUserMenu(!userMenu)}>
+              R
+            </div>
+            <div
+              className={
+                userMenu ? "navbar-user-menu active" : "navbar-user-menu"
+              }
+            >
               <div className="menu-header">
                 <div className="menu-logo">R</div>
                 <div className="menu-info">
@@ -96,19 +113,75 @@ const App = (props) => {
                 </div>
               </div>
               <div className="menu-content">
-                <Icon icon="your-channel" />
-                <Icon icon="purchase-and-memberships" />
-                <Icon icon="youtube-studio" />
-                <Icon icon="switch-account" />
-                <Icon icon="apperance" />
-                <Icon icon="language" />
-                <Icon icon="location" />
-                <Icon icon="settings-2" />
-                <Icon icon="your-data" />
-                <Icon icon="help" />
-                <Icon icon="send-feedback" />
-                <Icon icon="keyboard-shortcuts" />
-                <Icon icon="right" />
+                <ul className="menu-list">
+                  <li className="menu-item">
+                    <Icon icon="your-channel" className="menu-icon" />
+                    <span className="menu-text">Your channel</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon
+                      icon="purchases-and-memberships"
+                      className="menu-icon"
+                    />
+                    <span className="menu-text">Purchases and memberships</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="youtube-studio" className="menu-icon" />
+                    <span className="menu-text">YuoTube Studio</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="switch-account" className="menu-icon" />
+                    <span className="menu-text">Switch account</span>
+                    <Icon icon="right" className="menu-right" />
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="sign-out" className="menu-icon" />
+                    <span className="menu-text">Sign out</span>
+                  </li>
+                </ul>
+                <ul className="menu-list">
+                  <li className="menu-item">
+                    <Icon icon="apperance" className="menu-icon" />
+                    <span className="menu-text">Appearance: Device theme</span>
+                    <Icon icon="right" className="menu-right" />
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="language" className="menu-icon" />
+                    <span className="menu-text">Language: English</span>
+                    <Icon icon="right" className="menu-right" />
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="location" className="menu-icon" />
+                    <span className="menu-text">Location: Poland</span>
+                    <Icon icon="right" className="menu-right" />
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="settings-2" className="menu-icon" />
+                    <span className="menu-text">Settings</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="your-data" className="menu-icon" />
+                    <span className="menu-text">Your data in YouTube</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="help" className="menu-icon" />
+                    <span className="menu-text">Help</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="send-feedback" className="menu-icon" />
+                    <span className="menu-text">Send feedback</span>
+                  </li>
+                  <li className="menu-item">
+                    <Icon icon="keyboard-shortcuts" className="menu-icon" />
+                    <span className="menu-text">Keyboard shortcuts</span>
+                  </li>
+                </ul>
+                <ul className="menu-list">
+                  <li className="menu-item">
+                    <span className="menu-text">Restricted Mode: Off</span>
+                    <Icon icon="right" className="menu-right" />
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
