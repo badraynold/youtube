@@ -184,6 +184,10 @@ const Stream = (props) => {
   };
 
   const handleVideoLoaded = (e) => {
+    console.log("time updated");
+    console.log(videoRef.current.duration);
+    handleTimeUpdate(e);
+    setTimeUpdated(true);
     if (playVideo) {
       videoRef.current.play();
     }
@@ -273,12 +277,15 @@ const Stream = (props) => {
   }, [props.stream.id]);
 
   useEffect(() => {
-    if (onVideo || volumeClicked || progressClicked || !playVideo) {
+    if (
+      (onVideo || volumeClicked || progressClicked || !playVideo) &&
+      timeUpdated
+    ) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
     }
-  }, [onVideo, volumeClicked, progressClicked, playVideo]);
+  }, [onVideo, volumeClicked, progressClicked, playVideo, timeUpdated]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
