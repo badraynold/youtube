@@ -270,6 +270,7 @@ const Stream = (props) => {
     if (prevVideo.current !== props.stream.id) {
       videoRef.current.load();
       prevVideo.current = props.stream.id;
+      console.log("time-update start");
       setTimeUpdated(false);
       setProgressVideo(0);
       // setPlayVideo(true);
