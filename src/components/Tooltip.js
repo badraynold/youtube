@@ -4,7 +4,7 @@ const Tooltip = (props) => {
   const [mouseOn, setMouseOn] = useState(false);
 
   let tooltip = null;
-  console.log(props.position);
+
   if (mouseOn) {
     switch (props.position) {
       case "bottom":
