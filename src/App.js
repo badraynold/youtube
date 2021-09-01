@@ -41,8 +41,10 @@ const App = (props) => {
     if (asideActive) {
       asideRef.current.classList.add("show");
       asideRef.current.classList.add("active");
+      document.body.style.overflowY = "hidden";
     } else {
       asideRef.current.classList.remove("active");
+      document.body.style.overflowY = "";
     }
   }, [asideActive]);
 
