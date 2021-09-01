@@ -24,35 +24,42 @@ const StreamProfile = (props) => {
 
   return (
     <div className="main-profile">
-      <img src={profileImg} className="profile-img" alt="Profile " />
-      <div className="profile-info">
-        <h3 className="info-author">
-          {stream.author}
-          <Icon icon="author-sound" className="author-icon" />
-        </h3>
-        <p className="info-subscribers">{stream.subscribers} subscribers</p>
-        <p className="info-description">{description}</p>
-        <p className="info-more">Show more</p>
-      </div>
-      <div className="profile-actions">
-        {!subscribeStatus ? (
-          <button
-            className="action-subscribe"
-            onClick={() => setSubscribeStatus(true)}
-          >
-            Subscribe
-          </button>
-        ) : (
-          <>
+      <div className="profile-header">
+        <img src={profileImg} className="profile-img" alt="Profile " />
+        <div className="profile-info">
+          <div className="info-author-wrapper">
+            <h3 className="info-author">
+              {stream.author}
+              <Icon icon="author-sound" className="author-icon" />
+            </h3>
+
+            <p className="info-subscribers">{stream.subscribers} subscribers</p>
+          </div>
+        </div>
+        <div className="profile-actions">
+          {!subscribeStatus ? (
             <button
-              className="action-unsubscribe"
-              onClick={() => setSubscribeStatus(false)}
+              className="action-subscribe"
+              onClick={() => setSubscribeStatus(true)}
             >
-              Subscribed
+              Subscribe
             </button>
-            <Icon icon="notification" />
-          </>
-        )}
+          ) : (
+            <>
+              <button
+                className="action-unsubscribe"
+                onClick={() => setSubscribeStatus(false)}
+              >
+                Subscribed
+              </button>
+              <Icon icon="notification" />
+            </>
+          )}
+        </div>
+      </div>
+      <div className="profile-content">
+        <p className="profile-description">{description}</p>
+        <p className="profile-more">Show more</p>
       </div>
     </div>
   );
