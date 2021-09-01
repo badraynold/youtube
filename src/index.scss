@@ -886,10 +886,6 @@ html {
       flex-grow: 1;
       .navbar-search {
         width: 100%;
-        .search-input-wrapper {
-          // flex-shrink: 1;
-          // flex-grow: 0;
-        }
       }
     }
   }
@@ -921,5 +917,43 @@ html {
         }
       }
     }
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar {
+    .navbar-mid {
+      // display: none;
+      visibility: none;
+      .navbar-search {
+        // width: 100%;
+        .search-input-wrapper {
+          // flex-shrink: 1;
+          // flex-grow: 0;
+        }
+      }
+    }
+  }
+  .content {
+    .content-main {
+      .main-description {
+        .description-info {
+          .info-left {
+            .info-views {
+              display: none;
+            }
+            .info-release {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .content {
+    min-width: 550px;
   }
 }
