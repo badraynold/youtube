@@ -471,7 +471,7 @@ html {
   display: flex;
   justify-content: center;
   .content-main {
-    width: 128rem;
+    max-width: 128rem;
     .main-description {
       margin-top: 1.8rem;
       border-bottom: 0.1rem solid var(--gray-600-color);
@@ -559,7 +559,9 @@ html {
 
       column-gap: 1.6rem;
       padding-bottom: 1.5rem;
+
       border-bottom: 0.1rem solid var(--gray-600-color);
+      margin-bottom: 2rem;
       .profile-img {
         border-radius: 50%;
         width: 4.8rem;
@@ -869,6 +871,52 @@ html {
             }
           }
           .desc-time {
+          }
+        }
+      }
+    }
+  }
+}
+
+// rwd
+
+@media (max-width: 1100px) {
+  .navbar {
+    .navbar-mid {
+      flex-grow: 1;
+      .navbar-search {
+        width: 100%;
+        .search-input-wrapper {
+          // flex-shrink: 1;
+          // flex-grow: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .content {
+    flex-direction: column;
+    .content-main {
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .content {
+    .content-main {
+      .main-description {
+        .description-info {
+          .info-left {
+            .info-views {
+              &:after {
+                content: none;
+              }
+            }
+            .info-release {
+              display: none;
+            }
           }
         }
       }

@@ -98,7 +98,7 @@ const App = (props) => {
           </Tooltip>
           <div className="navbar-user-wrapper">
             <div className="navbar-user" onClick={() => setUserMenu(!userMenu)}>
-              R
+              C
             </div>
             <div
               className={
@@ -106,9 +106,9 @@ const App = (props) => {
               }
             >
               <div className="menu-header">
-                <div className="menu-logo">R</div>
+                <div className="menu-logo">C</div>
                 <div className="menu-info">
-                  <div className="menu-name">Rafał Łukawski</div>
+                  <div className="menu-name">Cryptor Suli</div>
                   <div className="menu-manage">Manage your Google Account</div>
                 </div>
               </div>
