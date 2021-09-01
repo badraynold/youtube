@@ -13,6 +13,7 @@ const Stream = (props) => {
   const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [totalTime, setTotalTime] = useState("");
+  const [offsetTime, setOffsetTime] = useState("");
 
   const [onVideo, setOnVideo] = useState(false);
   const [onVolumeIcon, setOnVolumeIcon] = useState(false);
@@ -31,6 +32,7 @@ const Stream = (props) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoSrc, setVideoSrc] = useState(props.stream.video);
   const [posterImg, setPosterImg] = useState("");
+  const [progressTime, setProgressTime] = useState(50);
 
   const videoRef = useRef();
 
@@ -102,7 +104,29 @@ const Stream = (props) => {
     setRealVolumeVideo(pct);
   };
 
-  const handleProgressSet = (e) => {
+  const handleProgressTime = (e) => {
+    const progressRect = progressInnerRef.current.getClientRects()[0];
+    let x = e.clientX - progressRect.x;
+
+    if (x < 0) {
+      x = 0;
+    } else if (x > progressRect.width) {
+      x = progressRect.width;
+    }
+
+    const pct = (x / progressRect.width) * 100;
+    const offsetTime = (pct / 100) * videoRef.current.duration;
+    const ms = getMinutesSeconds(offsetTime);
+
+    setOffsetTime(`${ms.minutes}:${ms.seconds}`);
+    setProgressTime(pct);
+  };
+
+  const handleTimeMouseMove = (e) => {
+    handleProgressTime(e);
+  };
+
+  const handleProgressBar = (e) => {
     const progressRect = progressInnerRef.current.getClientRects()[0];
     let x = e.clientX - progressRect.x;
 
@@ -125,7 +149,7 @@ const Stream = (props) => {
 
   const handleProgressMouseDown = (e) => {
     setProgressClicked(true);
-    handleProgressSet(e);
+    handleProgressBar(e);
   };
 
   const handleVolumeMouseMove = (e) => {
@@ -135,7 +159,8 @@ const Stream = (props) => {
   };
   const handleProgressMouseMove = (e) => {
     if (progressClicked) {
-      handleProgressSet(e);
+      handleProgressTime(e);
+      handleProgressBar(e);
     }
   };
 
@@ -345,11 +370,20 @@ const Stream = (props) => {
             onMouseEnter={() => setOnProgressBar(true)}
             onMouseLeave={() => setOnProgressBar(false)}
             ref={progressRef}
+            onMouseMove={(e) => handleTimeMouseMove(e)}
           >
             <div
               className={visibleProgress ? "progress active" : "progress"}
               ref={progressInnerRef}
             >
+              {visibleProgress ? (
+                <div
+                  className="progress-time"
+                  style={{ width: `${progressTime}%` }}
+                >
+                  <span>{offsetTime}</span>
+                </div>
+              ) : null}
               <div
                 className="progress-bar"
                 style={{

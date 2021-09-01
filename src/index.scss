@@ -96,7 +96,7 @@ html {
     white-space: nowrap;
     font-weight: 400;
     letter-spacing: 0.01rem;
-    // background: red;
+
     opacity: 0;
     animation: tooltip 0.25s forwards;
   }
@@ -703,8 +703,24 @@ html {
             height: 0.3rem;
             background-color: rgba(128, 128, 128, 0.5);
             transition: height 0.1s;
+            .progress-time {
+              position: relative;
+              color: white;
+              height: 100%;
+              background-color: rgba(196, 196, 196, 0.5);
+
+              span {
+                position: absolute;
+                right: 0;
+                transform: translateX(50%);
+                top: -2.6rem;
+
+                font-size: 1.2rem;
+              }
+            }
             .progress-bar {
               position: absolute;
+              top: 0;
               height: 100%;
               background-color: var(--red-color);
 
