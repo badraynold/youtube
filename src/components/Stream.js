@@ -13,7 +13,7 @@ const Stream = (props) => {
   const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [totalTime, setTotalTime] = useState("");
-  const [offsetTime, setOffsetTime] = useState("");
+  const [progressTime, setProgressTime] = useState("");
 
   const [onVideo, setOnVideo] = useState(false);
   const [onVolumeIcon, setOnVolumeIcon] = useState(false);
@@ -32,7 +32,7 @@ const Stream = (props) => {
   const [videoLoaded, setVideoLoaded] = useState(false);
   const [videoSrc, setVideoSrc] = useState(props.stream.video);
   const [posterImg, setPosterImg] = useState("");
-  const [progressTime, setProgressTime] = useState(50);
+  const [progressTimeBar, setProgressTimeBar] = useState(50);
 
   const videoRef = useRef();
 
@@ -115,11 +115,11 @@ const Stream = (props) => {
     }
 
     const pct = (x / progressRect.width) * 100;
-    const offsetTime = (pct / 100) * videoRef.current.duration;
-    const ms = getMinutesSeconds(offsetTime);
+    const progressTime = (pct / 100) * videoRef.current.duration;
+    const ms = getMinutesSeconds(progressTime);
 
-    setOffsetTime(`${ms.minutes}:${ms.seconds}`);
-    setProgressTime(pct);
+    setProgressTime(`${ms.minutes}:${ms.seconds}`);
+    setProgressTimeBar(pct);
   };
 
   const handleTimeMouseMove = (e) => {
@@ -376,14 +376,15 @@ const Stream = (props) => {
               className={visibleProgress ? "progress active" : "progress"}
               ref={progressInnerRef}
             >
-              {visibleProgress ? (
-                <div
-                  className="progress-time"
-                  style={{ width: `${progressTime}%` }}
-                >
-                  <span>{offsetTime}</span>
-                </div>
-              ) : null}
+              <div
+                className={
+                  visibleProgress ? "progress-time active" : "progress-time"
+                }
+                style={{ width: `${progressTimeBar}%` }}
+              >
+                <span>{progressTime}</span>
+              </div>
+
               <div
                 className="progress-bar"
                 style={{
