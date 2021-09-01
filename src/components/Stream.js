@@ -63,7 +63,7 @@ const Stream = (props) => {
     setCurrentTime(`${ms.minutes}:${ms.seconds}`);
     const tms = getMinutesSeconds(videoRef.current.duration);
     setTotalTime(`${tms.minutes}:${tms.seconds}`);
-    setTimeUpdated(true);
+    // setTimeUpdated(true);
   };
 
   const getMinutesSeconds = (t) => {
