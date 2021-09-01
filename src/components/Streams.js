@@ -51,8 +51,8 @@ import stream13ProfileImg from "../streams/bon-jovi-its-my-life/profile.jpg";
 import stream13PreviewImg from "../streams/bon-jovi-its-my-life/stream.jpg";
 import stream13PosterImg from "../streams/bon-jovi-its-my-life/poster.png";
 
-import stream1Vid from "../streams/c-bool-golden-rules/stream.webm";
-import stream2Vid from "../streams/tina-mother-within/stream.webm";
+import stream1Vid from "../streams/c-bool-golden-rules/stream.mp4";
+import stream2Vid from "../streams/tina-mother-within/stream.mp4";
 import stream3Vid from "../streams/sia-courage-to-change/stream.webm";
 import stream4Vid from "../streams/rag-n-bone-human/stream.webm";
 import stream5Vid from "../streams/sadhguru-manifest/stream.mp4";
