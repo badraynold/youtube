@@ -278,15 +278,12 @@ const Stream = (props) => {
   }, [props.stream.id]);
 
   useEffect(() => {
-    if (
-      (onVideo || volumeClicked || progressClicked || !playVideo) &&
-      timeUpdated
-    ) {
+    if (onVideo || volumeClicked || progressClicked || !playVideo) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
     }
-  }, [onVideo, volumeClicked, progressClicked, playVideo, timeUpdated]);
+  }, [onVideo, volumeClicked, progressClicked, playVideo]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
@@ -332,127 +329,131 @@ const Stream = (props) => {
         </div>
       ) : null}
 
-      <div
-        className={visibleControls ? "video-controls active" : "video-controls"}
-      >
+      {timeUpdated ? (
         <div
-          className="progress-wrapper"
-          onMouseDown={(e) => handleProgressMouseDown(e)}
-          onMouseEnter={() => setOnProgressBar(true)}
-          onMouseLeave={() => setOnProgressBar(false)}
-          ref={progressRef}
+          className={
+            visibleControls ? "video-controls active" : "video-controls"
+          }
         >
           <div
-            className={visibleProgress ? "progress active" : "progress"}
-            ref={progressInnerRef}
+            className="progress-wrapper"
+            onMouseDown={(e) => handleProgressMouseDown(e)}
+            onMouseEnter={() => setOnProgressBar(true)}
+            onMouseLeave={() => setOnProgressBar(false)}
+            ref={progressRef}
           >
             <div
-              className="progress-bar"
-              style={{
-                width: `${progressVideo}%`,
-              }}
-              ref={progressVideoRef}
-            ></div>
-          </div>
-        </div>
-        <div className="buttons">
-          {playVideo ? (
-            <Tooltip message="Pause (k)">
-              <div onClick={() => setPlayVideo(false)}>
-                <Icon icon="pause" variant="player" />
-              </div>
-            </Tooltip>
-          ) : (
-            <Tooltip message="Play (k)">
-              <div onClick={() => setPlayVideo(true)}>
-                <Icon icon="play" variant="player" />
-              </div>
-            </Tooltip>
-          )}
-          <Tooltip message="Next (n)">
-            <Link to={`/watch?v=${nextId}`}>
-              <Icon icon="next" variant="player" />
-            </Link>
-          </Tooltip>
-
-          <Tooltip message={muteVideo ? "Unmute (m)" : "Mute (m)"}>
-            <div
-              onClick={() => setMuteVideo(!muteVideo)}
-              onMouseEnter={() => setOnVolumeIcon(true)}
-              onMouseLeave={() => setOnVolumeIcon(false)}
+              className={visibleProgress ? "progress active" : "progress"}
+              ref={progressInnerRef}
             >
-              {muteVideo ? (
-                <Icon icon="muted" variant="player" />
-              ) : (
-                <Icon icon="mute" variant="player" />
-              )}
-            </div>
-          </Tooltip>
-
-          <div
-            className={
-              visibleVolume ? "volume-wrapper active" : "volume-wrapper"
-            }
-            onMouseDown={handleVolumeMouseDown}
-            onMouseEnter={() => setOnVolumeBar(true)}
-            onMouseLeave={() => setOnVolumeBar(false)}
-            ref={volumeRef}
-          >
-            <div className="volume" ref={volumeInnerRef}>
               <div
-                className="volume-bar"
-                style={{ width: `${volumeVideo}%` }}
+                className="progress-bar"
+                style={{
+                  width: `${progressVideo}%`,
+                }}
+                ref={progressVideoRef}
               ></div>
             </div>
           </div>
-          {timeUpdated ? (
-            <>
-              <div className="time-current">{currentTime}</div>
-              <div className="time-separator">/</div>
-              <div className="time-duration">{totalTime}</div>
-            </>
-          ) : null}
-
-          <div className="icons-right">
-            <Tooltip message="Subtitles/closed captions (c)">
-              <div>
-                <Icon icon="subtitles" variant="player" />
-              </div>
+          <div className="buttons">
+            {playVideo ? (
+              <Tooltip message="Pause (k)">
+                <div onClick={() => setPlayVideo(false)}>
+                  <Icon icon="pause" variant="player" />
+                </div>
+              </Tooltip>
+            ) : (
+              <Tooltip message="Play (k)">
+                <div onClick={() => setPlayVideo(true)}>
+                  <Icon icon="play" variant="player" />
+                </div>
+              </Tooltip>
+            )}
+            <Tooltip message="Next (n)">
+              <Link to={`/watch?v=${nextId}`}>
+                <Icon icon="next" variant="player" />
+              </Link>
             </Tooltip>
 
-            <Tooltip message="Settings">
-              <div>
-                <Icon icon="settings" variant="player" />
-              </div>
-            </Tooltip>
-
-            <Tooltip message="Miniplayer (i)">
-              <div>
-                <Icon icon="miniplayer" variant="player" />
-              </div>
-            </Tooltip>
-
-            <Tooltip message="Theater mode (t)">
-              <div>
-                <Icon icon="theater" variant="player" />
-              </div>
-            </Tooltip>
-            <Tooltip
-              message={
-                fullscreenVideo ? "Exit full screen (f)" : "Full screen (f)"
-              }
-            >
-              <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
-                {fullscreenVideo ? (
-                  <Icon icon="fullscreen-exit" variant="player" />
+            <Tooltip message={muteVideo ? "Unmute (m)" : "Mute (m)"}>
+              <div
+                onClick={() => setMuteVideo(!muteVideo)}
+                onMouseEnter={() => setOnVolumeIcon(true)}
+                onMouseLeave={() => setOnVolumeIcon(false)}
+              >
+                {muteVideo ? (
+                  <Icon icon="muted" variant="player" />
                 ) : (
-                  <Icon icon="fullscreen" variant="player" />
+                  <Icon icon="mute" variant="player" />
                 )}
               </div>
             </Tooltip>
+
+            <div
+              className={
+                visibleVolume ? "volume-wrapper active" : "volume-wrapper"
+              }
+              onMouseDown={handleVolumeMouseDown}
+              onMouseEnter={() => setOnVolumeBar(true)}
+              onMouseLeave={() => setOnVolumeBar(false)}
+              ref={volumeRef}
+            >
+              <div className="volume" ref={volumeInnerRef}>
+                <div
+                  className="volume-bar"
+                  style={{ width: `${volumeVideo}%` }}
+                ></div>
+              </div>
+            </div>
+            {timeUpdated ? (
+              <>
+                <div className="time-current">{currentTime}</div>
+                <div className="time-separator">/</div>
+                <div className="time-duration">{totalTime}</div>
+              </>
+            ) : null}
+
+            <div className="icons-right">
+              <Tooltip message="Subtitles/closed captions (c)">
+                <div>
+                  <Icon icon="subtitles" variant="player" />
+                </div>
+              </Tooltip>
+
+              <Tooltip message="Settings">
+                <div>
+                  <Icon icon="settings" variant="player" />
+                </div>
+              </Tooltip>
+
+              <Tooltip message="Miniplayer (i)">
+                <div>
+                  <Icon icon="miniplayer" variant="player" />
+                </div>
+              </Tooltip>
+
+              <Tooltip message="Theater mode (t)">
+                <div>
+                  <Icon icon="theater" variant="player" />
+                </div>
+              </Tooltip>
+              <Tooltip
+                message={
+                  fullscreenVideo ? "Exit full screen (f)" : "Full screen (f)"
+                }
+              >
+                <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
+                  {fullscreenVideo ? (
+                    <Icon icon="fullscreen-exit" variant="player" />
+                  ) : (
+                    <Icon icon="fullscreen" variant="player" />
+                  )}
+                </div>
+              </Tooltip>
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 };
