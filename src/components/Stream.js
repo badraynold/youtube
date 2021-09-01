@@ -29,12 +29,14 @@ const Stream = (props) => {
   const [progressClicked, setProgressClicked] = useState(false);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const stream = props.stream;
+  const [videoSrc, setVideoSrc] = useState("");
+  const [posterImg, setPosterImg] = useState("");
 
   const videoRef = useRef();
+
   const videoWrapperRef = useRef();
 
-  const prevVideo = useRef();
+  // const prevVideo = useRef();
   const volumeRef = useRef();
   const volumeInnerRef = useRef();
 
@@ -51,8 +53,6 @@ const Stream = (props) => {
     nextIdx = 0;
   }
   const nextId = Streams[nextIdx].id;
-
-  const videoSrc = stream.video;
 
   const handleTimeUpdate = (e) => {
     const progress =
@@ -183,7 +183,7 @@ const Stream = (props) => {
   };
 
   const handleVideoLoaded = (e) => {
-    console.log("time updated");
+    console.log("video loaded");
     console.log(videoRef.current.duration);
     handleTimeUpdate(e);
     setVideoLoaded(true);
@@ -266,17 +266,21 @@ const Stream = (props) => {
   }, [muteVideo]);
 
   useEffect(() => {
-    if (prevVideo.current !== props.stream.id) {
-      videoRef.current.load();
-      prevVideo.current = props.stream.id;
-      console.log("time-update start");
-      setVideoLoaded(false);
-      setProgressVideo(0);
-    }
-  }, [props.stream.id]);
+    console.log("load video start");
+    videoRef.current.load();
+    setVideoLoaded(false);
+    setProgressVideo(0);
+  }, [videoSrc]);
 
   useEffect(() => {
-    if (onVideo || volumeClicked || progressClicked || !playVideo) {
+    if (props.stream.posterImage) {
+      setPosterImg(props.stream.posterImage);
+    }
+    setVideoSrc(props.stream.video);
+  }, [props.stream.video, props.stream.posterImage]);
+
+  useEffect(() => {
+    if (onVideo || volumeClicked || progressClicked || playVideo) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
@@ -315,9 +319,11 @@ const Stream = (props) => {
         ref={videoRef}
         onLoadedData={(e) => handleVideoLoaded(e)}
         onEnded={(e) => handleEndVideo(e)}
+        poster={posterImg}
       >
         <source src={videoSrc} />
       </video>
+
       {centralIcon ? (
         <div
           className="video-central"

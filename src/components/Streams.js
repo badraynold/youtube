@@ -1,42 +1,55 @@
 import stream1Img from "../streams/c-bool-golden-rules/stream.jpg";
 import stream1ProfileImg from "../streams/c-bool-golden-rules/profile.jpg";
 import stream1PreviewImg from "../streams/c-bool-golden-rules/stream.webp";
+import stream1PosterImg from "../streams/c-bool-golden-rules/poster.png";
 import stream2Img from "../streams/tina-mother-within/stream.jpg";
 import stream2ProfileImg from "../streams/tina-mother-within/profile.jpg";
 import stream2PreviewImg from "../streams/tina-mother-within/stream.webp";
+import stream2PosterImg from "../streams/tina-mother-within/poster.png";
 import stream3Img from "../streams/sia-courage-to-change/stream.jpg";
 import stream3ProfileImg from "../streams/sia-courage-to-change/profile.jpg";
 import stream3PreviewImg from "../streams/sia-courage-to-change/stream.webp";
+import stream3PosterImg from "../streams/sia-courage-to-change/poster.png";
 import stream4Img from "../streams/rag-n-bone-human/stream.jpg";
 import stream4ProfileImg from "../streams/rag-n-bone-human/profile.jpg";
 import stream4PreviewImg from "../streams/rag-n-bone-human/stream.webp";
+import stream4PosterImg from "../streams/rag-n-bone-human/poster.png";
 import stream5Img from "../streams/sadhguru-manifest/stream.jpg";
 import stream5ProfileImg from "../streams/sadhguru-manifest/profile.jpg";
-import stream5PreviewImg from "../streams/sadhguru-manifest//stream.webp";
+import stream5PreviewImg from "../streams/sadhguru-manifest/stream.webp";
+import stream5PosterImg from "../streams/sadhguru-manifest/poster.png";
 import stream6Img from "../streams/pharell-williams-freedom/stream.jpg";
 import stream6ProfileImg from "../streams/pharell-williams-freedom/profile.jpg";
 import stream6PreviewImg from "../streams/pharell-williams-freedom/stream.webp";
+import stream6PosterImg from "../streams/pharell-williams-freedom/poster.png";
 import stream7Img from "../streams/will-smith-men-in-black/stream.jpg";
 import stream7ProfileImg from "../streams/will-smith-men-in-black/profile.jpg";
-import stream7PreviewImg from "../streams/will-smith-men-in-black//stream.webp";
+import stream7PreviewImg from "../streams/will-smith-men-in-black/stream.webp";
+import stream7PosterImg from "../streams/will-smith-men-in-black/poster.png";
 import stream8Img from "../streams/imagine-dragons-whatever/stream.jpg";
 import stream8ProfileImg from "../streams/imagine-dragons-whatever/profile.jpg";
 import stream8PreviewImg from "../streams/imagine-dragons-whatever/stream.webp";
+import stream8PosterImg from "../streams/imagine-dragons-whatever/poster.png";
 import stream9Img from "../streams/coldplay-adventure-of-a-lifetime/stream.jpg";
 import stream9ProfileImg from "../streams/coldplay-adventure-of-a-lifetime/profile.jpg";
 import stream9PreviewImg from "../streams/coldplay-adventure-of-a-lifetime/stream.webp";
+import stream9PosterImg from "../streams/coldplay-adventure-of-a-lifetime/poster.png";
 import stream10Img from "../streams/katy-perry-dark-horse/stream.jpg";
 import stream10ProfileImg from "../streams/katy-perry-dark-horse/profile.jpg";
 import stream10PreviewImg from "../streams/katy-perry-dark-horse/stream.webp";
+import stream10PosterImg from "../streams/katy-perry-dark-horse/poster.png";
 import stream11Img from "../streams/ed-sheeran-shape-of-you/stream.jpg";
 import stream11ProfileImg from "../streams/ed-sheeran-shape-of-you/profile.jpg";
 import stream11PreviewImg from "../streams/ed-sheeran-shape-of-you/stream.jpg";
+import stream11PosterImg from "../streams/ed-sheeran-shape-of-you/poster.png";
 import stream12Img from "../streams/linkin-park-talking-to-myself/stream.jpg";
 import stream12ProfileImg from "../streams/linkin-park-talking-to-myself/profile.jpg";
 import stream12PreviewImg from "../streams/linkin-park-talking-to-myself/stream.jpg";
+import stream12PosterImg from "../streams/linkin-park-talking-to-myself/poster.png";
 import stream13Img from "../streams/bon-jovi-its-my-life/stream.jpg";
 import stream13ProfileImg from "../streams/bon-jovi-its-my-life/profile.jpg";
 import stream13PreviewImg from "../streams/bon-jovi-its-my-life/stream.jpg";
+import stream13PosterImg from "../streams/bon-jovi-its-my-life/poster.png";
 
 import stream1Vid from "../streams/c-bool-golden-rules/stream.webm";
 import stream2Vid from "../streams/tina-mother-within/stream.webm";
@@ -72,6 +85,7 @@ const Streams = [
     video: stream1Vid,
     profileImage: stream1ProfileImg,
     previewImage: stream1PreviewImg,
+    posterImage: stream1PosterImg,
   },
   {
     id: "Wul9vbHqYDA",
@@ -92,6 +106,7 @@ const Streams = [
     video: stream2Vid,
     profileImage: stream2ProfileImg,
     previewImage: stream2PreviewImg,
+    posterImage: stream2PosterImg,
   },
   {
     id: "XnSTfwI9cPo",
@@ -110,6 +125,7 @@ const Streams = [
     video: stream3Vid,
     profileImage: stream3ProfileImg,
     previewImage: stream3PreviewImg,
+    posterImage: stream3PosterImg,
   },
   {
     id: "L3wKzyIN1yk",
@@ -130,6 +146,7 @@ const Streams = [
     video: stream4Vid,
     profileImage: stream4ProfileImg,
     previewImage: stream4PreviewImg,
+    posterImage: stream4PosterImg,
   },
   {
     id: "UwGSgJytufY",
@@ -148,6 +165,7 @@ const Streams = [
     video: stream5Vid,
     profileImage: stream5ProfileImg,
     previewImage: stream5PreviewImg,
+    posterImage: stream5PosterImg,
   },
   {
     id: "LlY90lG_Fuw",
@@ -167,6 +185,7 @@ const Streams = [
     video: stream6Vid,
     profileImage: stream6ProfileImg,
     previewImage: stream6PreviewImg,
+    posterImage: stream6PosterImg,
   },
   {
     id: "fiBLgEx6svA",
@@ -186,6 +205,7 @@ const Streams = [
     video: stream7Vid,
     profileImage: stream7ProfileImg,
     previewImage: stream7PreviewImg,
+    posterImage: stream7PosterImg,
   },
   {
     id: "gOsM-DYAEhY",
@@ -206,6 +226,7 @@ const Streams = [
     video: stream8Vid,
     profileImage: stream8ProfileImg,
     previewImage: stream8PreviewImg,
+    posterImage: stream8PosterImg,
   },
   {
     id: "QtXby3twMmI",
@@ -224,6 +245,7 @@ const Streams = [
     video: stream9Vid,
     profileImage: stream9ProfileImg,
     previewImage: stream9PreviewImg,
+    posterImage: stream9PosterImg,
   },
   {
     id: "0KSOMA3QBU0",
@@ -243,6 +265,7 @@ const Streams = [
     video: stream10Vid,
     profileImage: stream10ProfileImg,
     previewImage: stream10PreviewImg,
+    posterImage: stream10PosterImg,
   },
 
   {
@@ -263,6 +286,7 @@ const Streams = [
     video: stream11Vid,
     profileImage: stream11ProfileImg,
     previewImage: stream11PreviewImg,
+    posterImage: stream11PosterImg,
   },
   {
     id: "lvs68OKOquM",
@@ -282,6 +306,7 @@ const Streams = [
     video: stream12Vid,
     profileImage: stream12ProfileImg,
     previewImage: stream12PreviewImg,
+    posterImage: stream12PosterImg,
   },
   {
     id: "vx2u5uUu3DE",
@@ -301,6 +326,7 @@ const Streams = [
     video: stream13Vid,
     profileImage: stream13ProfileImg,
     previewImage: stream13PreviewImg,
+    posterImage: stream13PosterImg,
   },
 ];
 
