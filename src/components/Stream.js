@@ -28,7 +28,7 @@ const Stream = (props) => {
   const [progressVideo, setProgressVideo] = useState(0);
   const [progressClicked, setProgressClicked] = useState(false);
 
-  const [timeUpdated, setTimeUpdated] = useState(false);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   const stream = props.stream;
 
   const videoRef = useRef();
@@ -63,7 +63,6 @@ const Stream = (props) => {
     setCurrentTime(`${ms.minutes}:${ms.seconds}`);
     const tms = getMinutesSeconds(videoRef.current.duration);
     setTotalTime(`${tms.minutes}:${tms.seconds}`);
-    // setTimeUpdated(true);
   };
 
   const getMinutesSeconds = (t) => {
@@ -187,7 +186,7 @@ const Stream = (props) => {
     console.log("time updated");
     console.log(videoRef.current.duration);
     handleTimeUpdate(e);
-    setTimeUpdated(true);
+    setVideoLoaded(true);
     if (playVideo) {
       videoRef.current.play();
     }
@@ -271,9 +270,8 @@ const Stream = (props) => {
       videoRef.current.load();
       prevVideo.current = props.stream.id;
       console.log("time-update start");
-      setTimeUpdated(false);
+      setVideoLoaded(false);
       setProgressVideo(0);
-      // setPlayVideo(true);
     }
   }, [props.stream.id]);
 
@@ -329,7 +327,7 @@ const Stream = (props) => {
         </div>
       ) : null}
 
-      {timeUpdated ? (
+      {videoLoaded ? (
         <div
           className={
             visibleControls ? "video-controls active" : "video-controls"
@@ -405,13 +403,10 @@ const Stream = (props) => {
                 ></div>
               </div>
             </div>
-            {timeUpdated ? (
-              <>
-                <div className="time-current">{currentTime}</div>
-                <div className="time-separator">/</div>
-                <div className="time-duration">{totalTime}</div>
-              </>
-            ) : null}
+
+            <div className="time-current">{currentTime}</div>
+            <div className="time-separator">/</div>
+            <div className="time-duration">{totalTime}</div>
 
             <div className="icons-right">
               <Tooltip message="Subtitles/closed captions (c)">
