@@ -795,19 +795,27 @@ const Icon = (props) => {
   }
 
   return (
-    <div
-      className={classes}
-      onClick={onClick}
-      ref={iconRef}
-      onMouseDown={() => {
-        setMouseDown(true);
-        setPhase(true);
-      }}
-      onMouseUp={() => setMouseDown(false)}
-      onTransitionEnd={() => setPhase(false)}
-    >
-      {icon}
-    </div>
+    <>
+      {props.variant === "player" ? (
+        <div className={classes} onClick={onClick} ref={iconRef}>
+          {icon}
+        </div>
+      ) : (
+        <div
+          className={classes}
+          onClick={onClick}
+          ref={iconRef}
+          onMouseDown={() => {
+            setMouseDown(true);
+            setPhase(true);
+          }}
+          onMouseUp={() => setMouseDown(false)}
+          onTransitionEnd={() => setPhase(false)}
+        >
+          {icon}
+        </div>
+      )}
+    </>
   );
 };
 
