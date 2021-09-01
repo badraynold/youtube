@@ -84,11 +84,10 @@ html {
   position: relative;
 
   .tooltip-top,
-  .tooltip-bottom {
+  .tooltip-bottom,
+  .tooltip-top-left,
+  .tooltip-top-right {
     position: absolute;
-
-    left: 50%;
-    transform: translateX(-50%);
     background: rgba(64, 64, 64, 0.7);
     padding: 0.7rem 1.5rem;
     color: var(--white-color);
@@ -103,10 +102,24 @@ html {
 
   .tooltip-top {
     top: -4rem;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .tooltip-bottom {
+    left: 50%;
+    transform: translateX(-50%);
     bottom: -4rem;
+  }
+
+  .tooltip-top-left {
+    top: -4rem;
+    right: 0;
+  }
+
+  .tooltip-top-right {
+    top: -4rem;
+    left: 0;
   }
 
   @keyframes tooltip {

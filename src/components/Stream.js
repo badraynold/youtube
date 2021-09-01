@@ -402,7 +402,7 @@ const Stream = (props) => {
                 </div>
               </Tooltip>
             ) : (
-              <Tooltip message="Play (k)">
+              <Tooltip message="Play (k)" position="top-right">
                 <div onClick={() => setPlayVideo(true)}>
                   <Icon icon="play" variant="player" />
                 </div>
@@ -474,6 +474,7 @@ const Stream = (props) => {
                 </div>
               </Tooltip>
               <Tooltip
+                position="top-left"
                 message={
                   fullscreenVideo ? "Exit full screen (f)" : "Full screen (f)"
                 }

@@ -3,13 +3,25 @@ import { useState } from "react";
 const Tooltip = (props) => {
   const [mouseOn, setMouseOn] = useState(false);
 
-  const tooltip = mouseOn ? (
-    props.position === "bottom" ? (
-      <div className="tooltip-bottom">{props.message}</div>
-    ) : (
-      <div className="tooltip-top">{props.message}</div>
-    )
-  ) : null;
+  let tooltip = null;
+  console.log(props.position);
+  if (mouseOn) {
+    switch (props.position) {
+      case "bottom":
+        tooltip = <div className="tooltip-bottom">{props.message}</div>;
+        break;
+      case "top-left":
+        tooltip = <div className="tooltip-top-left">{props.message}</div>;
+        break;
+      case "top-right":
+        tooltip = <div className="tooltip-top-right">{props.message}</div>;
+        break;
+
+      default:
+        tooltip = <div className="tooltip-top">{props.message}</div>;
+        break;
+    }
+  }
 
   return (
     <div
