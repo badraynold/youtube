@@ -15,7 +15,9 @@ const Tooltip = (props) => {
     <div
       className="tooltip-trigger"
       onMouseEnter={() => setMouseOn(true)}
-      onMouseLeave={() => setMouseOn(false)}
+      onMouseLeave={() => {
+        setMouseOn(false);
+      }}
     >
       {props.children}
       {tooltip}

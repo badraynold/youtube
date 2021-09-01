@@ -26,10 +26,6 @@ const Icon = (props) => {
     }
   };
 
-  const handleMouseUp = (e) => {
-    setMouseDown(false);
-  };
-
   useEffect(() => {
     if (mouseDown || phase) {
       setBackground(true);
@@ -42,11 +38,16 @@ const Icon = (props) => {
   }, [mouseDown, phase]);
 
   useEffect(() => {
+    const handleMouseUp = (e) => {
+      setMouseDown(false);
+    };
+
     if (mouseDown) {
-      setPhase(true);
+      window.addEventListener("mouseup", handleMouseUp);
     }
-    window.addEventListener("mouseup", handleMouseUp);
-    return () => window.removeEventListener("mouseup", handleMouseUp);
+    return () => {
+      window.removeEventListener("mouseup", handleMouseUp);
+    };
   }, [mouseDown]);
 
   switch (props.icon) {
@@ -798,7 +799,10 @@ const Icon = (props) => {
       className={classes}
       onClick={onClick}
       ref={iconRef}
-      onMouseDown={() => setMouseDown(true)}
+      onMouseDown={() => {
+        setMouseDown(true);
+        setPhase(true);
+      }}
       onMouseUp={() => setMouseDown(false)}
       onTransitionEnd={() => setPhase(false)}
     >

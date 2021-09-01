@@ -29,7 +29,7 @@ const Stream = (props) => {
   const [progressClicked, setProgressClicked] = useState(false);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [videoSrc, setVideoSrc] = useState("");
+  const [videoSrc, setVideoSrc] = useState(props.stream.video);
   const [posterImg, setPosterImg] = useState("");
 
   const videoRef = useRef();
