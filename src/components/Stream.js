@@ -396,7 +396,7 @@ const Stream = (props) => {
           </div>
           <div className="buttons">
             {playVideo ? (
-              <Tooltip message="Pause (k)">
+              <Tooltip message="Pause (k)" position="top-right">
                 <div onClick={() => setPlayVideo(false)}>
                   <Icon icon="pause" variant="player" />
                 </div>
