@@ -1,4 +1,5 @@
 module.exports = {
+  name: "youtube-production",
   script: "serve",
   env: {
     PM2_SERVE_PATH: "./build",
