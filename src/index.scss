@@ -485,7 +485,7 @@ html {
   display: flex;
   justify-content: center;
   .content-main {
-    max-width: 128rem;
+    width: 128rem;
     .main-description {
       margin-top: 1.8rem;
       border-bottom: 0.1rem solid var(--gray-600-color);
@@ -916,6 +916,9 @@ html {
 @media (max-width: 1200px) {
   .content {
     flex-direction: column;
+    .content-main {
+      width: auto;
+    }
     .content-right {
       width: auto;
     }
