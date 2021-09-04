@@ -5,10 +5,10 @@ import { useRef, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
 const Stream = (props) => {
-  const [playVideo, setPlayVideo] = useState(false);
-  const [muteVideo, setMuteVideo] = useState(false);
-  const [fullscreenVideo, setFullscreenVideo] = useState(false);
-  const [volumeVideo, setVolumeVideo] = useState(100);
+  const [play, setPlay] = useState(false);
+  const [mute, setMute] = useState(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [volume, setVolume] = useState(100);
 
   const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
@@ -96,12 +96,12 @@ const Stream = (props) => {
     const pct = (x / volumeRect.width) * 100;
 
     if (pct > 0) {
-      setMuteVideo(false);
+      setMute(false);
     } else {
-      setMuteVideo(true);
+      setMute(true);
     }
-    setVolumeVideo(pct);
-    setRealVolumeVideo(pct);
+    setVolume(pct);
+    setRealvolume(pct);
   };
 
   const handleProgressTime = (e) => {
@@ -171,12 +171,12 @@ const Stream = (props) => {
   const handleProgressMouseUp = (e) => {
     setProgressClicked(false);
 
-    if (playVideo) {
+    if (play) {
       videoRef.current.play();
     }
   };
 
-  const setRealVolumeVideo = (vol) => {
+  const setRealvolume = (vol) => {
     videoRef.current.volume = vol / 100;
   };
 
@@ -187,13 +187,13 @@ const Stream = (props) => {
   const handleClick = (e) => {
     if (e.target === videoRef.current) {
       setCentralIcon(true);
-      setPlayVideo(!playVideo);
+      setPlay(!play);
     }
   };
 
   const handleFullScreenChange = (e) => {
     if (!document.fullscreenElement) {
-      setFullscreenVideo(false);
+      setFullscreen(false);
     }
   };
 
@@ -212,7 +212,7 @@ const Stream = (props) => {
     console.log(videoRef.current.duration);
     handleTimeUpdate(e);
     setVideoLoaded(true);
-    if (playVideo) {
+    if (play) {
       videoRef.current.play();
     }
   };
@@ -247,15 +247,15 @@ const Stream = (props) => {
   });
 
   useEffect(() => {
-    if (playVideo) {
+    if (play) {
       videoRef.current.play();
     } else {
       videoRef.current.pause();
     }
-  }, [playVideo]);
+  }, [play]);
 
   useEffect(() => {
-    if (fullscreenVideo) {
+    if (fullscreen) {
       if (videoWrapperRef.current.requestFullscreen) {
         videoWrapperRef.current.requestFullscreen();
       } else if (videoWrapperRef.current.webkitRequestFullscreen) {
@@ -278,17 +278,17 @@ const Stream = (props) => {
         }
       }
     }
-  }, [fullscreenVideo]);
+  }, [fullscreen]);
 
   useEffect(() => {
-    if (muteVideo) {
+    if (mute) {
       videoRef.current.muted = true;
-      setVolumeVideo(0);
+      setVolume(0);
     } else {
       videoRef.current.muted = false;
-      setVolumeVideo(videoRef.current.volume * 100);
+      setVolume(videoRef.current.volume * 100);
     }
-  }, [muteVideo]);
+  }, [mute]);
 
   useEffect(() => {
     console.log("load video start");
@@ -305,12 +305,12 @@ const Stream = (props) => {
   }, [props.stream.video, props.stream.posterImage]);
 
   useEffect(() => {
-    if (onVideo || volumeClicked || progressClicked || playVideo) {
+    if (onVideo || volumeClicked || progressClicked || play) {
       setVisibleControls(true);
     } else {
       setVisibleControls(false);
     }
-  }, [onVideo, volumeClicked, progressClicked, playVideo]);
+  }, [onVideo, volumeClicked, progressClicked, play]);
 
   useEffect(() => {
     if (onVolumeIcon || onVolumeBar || volumeClicked) {
@@ -336,7 +336,7 @@ const Stream = (props) => {
       onMouseEnter={() => setOnVideo(true)}
       onMouseLeave={() => setOnVideo(false)}
       onClick={(e) => handleClick(e)}
-      onDoubleClick={() => setFullscreenVideo(!fullscreenVideo)}
+      onDoubleClick={() => setFullscreen(!fullscreen)}
     >
       <video
         className="video-stream"
@@ -354,7 +354,7 @@ const Stream = (props) => {
           className="video-central"
           onAnimationEnd={() => setCentralIcon(false)}
         >
-          <Icon icon={playVideo ? "play" : "pause"} className="central-icon" />
+          <Icon icon={play ? "play" : "pause"} className="central-icon" />
         </div>
       ) : null}
 
@@ -395,15 +395,15 @@ const Stream = (props) => {
             </div>
           </div>
           <div className="buttons">
-            {playVideo ? (
+            {play ? (
               <Tooltip message="Pause (k)" position="top-right">
-                <div onClick={() => setPlayVideo(false)}>
+                <div onClick={() => setPlay(false)}>
                   <Icon icon="pause" variant="player" />
                 </div>
               </Tooltip>
             ) : (
               <Tooltip message="Play (k)" position="top-right">
-                <div onClick={() => setPlayVideo(true)}>
+                <div onClick={() => setPlay(true)}>
                   <Icon icon="play" variant="player" />
                 </div>
               </Tooltip>
@@ -414,13 +414,13 @@ const Stream = (props) => {
               </Link>
             </Tooltip>
 
-            <Tooltip message={muteVideo ? "Unmute (m)" : "Mute (m)"}>
+            <Tooltip message={mute ? "Unmute (m)" : "Mute (m)"}>
               <div
-                onClick={() => setMuteVideo(!muteVideo)}
+                onClick={() => setMute(!mute)}
                 onMouseEnter={() => setOnVolumeIcon(true)}
                 onMouseLeave={() => setOnVolumeIcon(false)}
               >
-                {muteVideo ? (
+                {mute ? (
                   <Icon icon="muted" variant="player" />
                 ) : (
                   <Icon icon="mute" variant="player" />
@@ -440,7 +440,7 @@ const Stream = (props) => {
               <div className="volume" ref={volumeInnerRef}>
                 <div
                   className="volume-bar"
-                  style={{ width: `${volumeVideo}%` }}
+                  style={{ width: `${volume}%` }}
                 ></div>
               </div>
             </div>
@@ -476,11 +476,11 @@ const Stream = (props) => {
               <Tooltip
                 position="top-left"
                 message={
-                  fullscreenVideo ? "Exit full screen (f)" : "Full screen (f)"
+                  fullscreen ? "Exit full screen (f)" : "Full screen (f)"
                 }
               >
-                <div onClick={() => setFullscreenVideo(!fullscreenVideo)}>
-                  {fullscreenVideo ? (
+                <div onClick={() => setFullscreen(!fullscreen)}>
+                  {fullscreen ? (
                     <Icon icon="fullscreen-exit" variant="player" />
                   ) : (
                     <Icon icon="fullscreen" variant="player" />
