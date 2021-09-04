@@ -10,7 +10,6 @@ const Stream = (props) => {
   const [fullscreen, setFullscreen] = useState(false);
   const [volume, setVolume] = useState(100);
 
-  const [volumeClicked, setVolumeClicked] = useState(false);
   const [currentTime, setCurrentTime] = useState("");
   const [totalTime, setTotalTime] = useState("");
   const [progressTime, setProgressTime] = useState("");
@@ -22,11 +21,12 @@ const Stream = (props) => {
 
   const [visibleControls, setVisibleControls] = useState(false);
   const [visibleVolume, setVisibleVolume] = useState(false);
+  const [visibleProgress, setVisibleProgress] = useState(false);
+  const [progressVideo, setProgressVideo] = useState(0);
 
   const [centralIcon, setCentralIcon] = useState(true);
 
-  const [visibleProgress, setVisibleProgress] = useState(false);
-  const [progressVideo, setProgressVideo] = useState(0);
+  const [volumeClicked, setVolumeClicked] = useState(false);
   const [progressClicked, setProgressClicked] = useState(false);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
@@ -35,10 +35,8 @@ const Stream = (props) => {
   const [progressTimeBar, setProgressTimeBar] = useState(50);
 
   const videoRef = useRef();
-
   const videoWrapperRef = useRef();
 
-  // const prevVideo = useRef();
   const volumeRef = useRef();
   const volumeInnerRef = useRef();
 
