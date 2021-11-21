@@ -348,7 +348,7 @@ const Stream = (props) => {
         onEnded={(e) => handleEndVideo(e)}
         onStalled={(e) => {
           console.log("stalled");
-          setLoading(true);
+          // setLoading(true);
         }}
         onPlaying={() => {
           console.log("playing");
