@@ -32,7 +32,7 @@ const Stream = (props) => {
   const [progressClicked, setProgressClicked] = useState(false);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
-  const [stalled, setStalled] = useState(true);
+  const [loading, setLoading] = useState(true);
   const [videoSrc, setVideoSrc] = useState(props.stream.video);
   const [posterImg, setPosterImg] = useState("");
   const [progressTimeBar, setProgressTimeBar] = useState(50);
@@ -295,6 +295,7 @@ const Stream = (props) => {
     console.log("load video start");
     videoRef.current.load();
     setVideoLoaded(false);
+    setLoading(true);
     setProgressVideo(0);
   }, [videoSrc]);
 
@@ -345,13 +346,27 @@ const Stream = (props) => {
         ref={videoRef}
         onLoadedData={(e) => handleVideoLoaded(e)}
         onEnded={(e) => handleEndVideo(e)}
-        onStalled={(e) => setStalled(true)}
-        onPlaying={() => setStalled(false)}
+        onStalled={(e) => {
+          console.log("stalled");
+          setLoading(true);
+        }}
+        onPlaying={() => {
+          console.log("playing");
+          setLoading(false);
+        }}
+        onWaiting={() => {
+          console.log("waiting");
+          setLoading(true);
+        }}
+        onCanPlayThrough={() => {
+          console.log("canplaythrough");
+          setLoading(false);
+        }}
         poster={posterImg}
       >
         <source src={videoSrc} />
       </video>
-      {(stalled || !videoLoaded) && (
+      {loading && play && (
         <img src={loadingImg} className="loading" alt="loading"></img>
       )}
 
