@@ -9,6 +9,19 @@
 
 html {
   font-size: 10px;
+  overflow-y: scroll;
+
+  scrollbar-color: #aaaaaa #eeeeee;
+
+  &::-webkit-scrollbar {
+    width: 1rem;
+    height: 1rem;
+
+    background-color: #eeeeee;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #eeeeee;
+  }
 }
 
 :root {
