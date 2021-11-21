@@ -4,6 +4,8 @@ import Tooltip from "./Tooltip";
 import { useRef, useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
 
+import loadingImg from "../icons/Rolling-1s-200px.svg";
+
 const Stream = (props) => {
   const [play, setPlay] = useState(false);
   const [mute, setMute] = useState(false);
@@ -30,6 +32,7 @@ const Stream = (props) => {
   const [progressClicked, setProgressClicked] = useState(false);
 
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [stalled, setStalled] = useState(true);
   const [videoSrc, setVideoSrc] = useState(props.stream.video);
   const [posterImg, setPosterImg] = useState("");
   const [progressTimeBar, setProgressTimeBar] = useState(50);
@@ -342,10 +345,15 @@ const Stream = (props) => {
         ref={videoRef}
         onLoadedData={(e) => handleVideoLoaded(e)}
         onEnded={(e) => handleEndVideo(e)}
+        onStalled={(e) => setStalled(true)}
+        onPlaying={() => setStalled(false)}
         poster={posterImg}
       >
         <source src={videoSrc} />
       </video>
+      {(stalled || !videoLoaded) && (
+        <img src={loadingImg} className="loading" alt="loading"></img>
+      )}
 
       {centralIcon ? (
         <div
